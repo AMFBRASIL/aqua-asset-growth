@@ -12,12 +12,17 @@ const SimulatorSection = () => {
   const inv = options[selected];
   const receitaMensalConservador = inv.units * 10000;
   const receitaMensalModerado = inv.units * 12000;
-  const valorizacao = inv.value * 0.2;
+  const valorizacaoConservador = inv.value * 0.5;
+  const valorizacaoModerado = inv.value * 0.8;
+  const valorVendaConservador = inv.value + valorizacaoConservador;
+  const valorVendaModerado = inv.value + valorizacaoModerado;
 
-  const totalConservador = receitaMensalConservador * 36 + valorizacao;
-  const totalModerado = receitaMensalModerado * 36 + valorizacao;
-  const roiConservador = ((totalConservador / inv.value) * 100).toFixed(0);
-  const roiModerado = ((totalModerado / inv.value) * 100).toFixed(0);
+  const lucroRendaConservador = receitaMensalConservador * 36;
+  const lucroRendaModerado = receitaMensalModerado * 36;
+  const lucroTotalConservador = lucroRendaConservador + valorizacaoConservador;
+  const lucroTotalModerado = lucroRendaModerado + valorizacaoModerado;
+  const roiConservador = ((lucroTotalConservador / inv.value) * 100).toFixed(0);
+  const roiModerado = ((lucroTotalModerado / inv.value) * 100).toFixed(0);
 
   const fmt = (v: number) => `R$ ${v.toLocaleString("pt-BR")}`;
 
@@ -73,21 +78,26 @@ const SimulatorSection = () => {
               </span>
               <div className="space-y-4 font-body">
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Receita mensal</span>
+                  <span className="text-muted-foreground">Receita mensal (locação)</span>
                   <span className="font-semibold text-foreground">{fmt(receitaMensalConservador)}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Receita em 3 anos</span>
-                  <span className="font-semibold text-foreground">{fmt(receitaMensalConservador * 36)}</span>
+                  <span className="text-muted-foreground">Renda locação em 3 anos</span>
+                  <span className="font-semibold text-foreground">{fmt(lucroRendaConservador)}</span>
+                </div>
+                <div className="h-px bg-border" />
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground">Valorização do imóvel (50%)</span>
+                  <span className="font-semibold text-foreground">{fmt(valorizacaoConservador)}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Valorização (20%)</span>
-                  <span className="font-semibold text-foreground">{fmt(valorizacao)}</span>
+                  <span className="text-muted-foreground">Valor de venda após 3 anos</span>
+                  <span className="font-semibold text-foreground">{fmt(valorVendaConservador)}</span>
                 </div>
                 <div className="h-px bg-border" />
                 <div className="flex justify-between items-end">
-                  <span className="text-foreground font-medium">Retorno total</span>
-                  <span className="text-2xl font-bold text-primary">{fmt(totalConservador)}</span>
+                  <span className="text-foreground font-medium">Lucro total</span>
+                  <span className="text-2xl font-bold text-primary">{fmt(lucroTotalConservador)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">ROI</span>
@@ -106,21 +116,26 @@ const SimulatorSection = () => {
               </span>
               <div className="space-y-4 font-body">
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Receita mensal</span>
+                  <span className="text-muted-foreground">Receita mensal (locação)</span>
                   <span className="font-semibold text-foreground">{fmt(receitaMensalModerado)}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Receita em 3 anos</span>
-                  <span className="font-semibold text-foreground">{fmt(receitaMensalModerado * 36)}</span>
+                  <span className="text-muted-foreground">Renda locação em 3 anos</span>
+                  <span className="font-semibold text-foreground">{fmt(lucroRendaModerado)}</span>
+                </div>
+                <div className="h-px bg-border" />
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground">Valorização do imóvel (80%)</span>
+                  <span className="font-semibold text-foreground">{fmt(valorizacaoModerado)}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Valorização (20%)</span>
-                  <span className="font-semibold text-foreground">{fmt(valorizacao)}</span>
+                  <span className="text-muted-foreground">Valor de venda após 3 anos</span>
+                  <span className="font-semibold text-foreground">{fmt(valorVendaModerado)}</span>
                 </div>
                 <div className="h-px bg-border" />
                 <div className="flex justify-between items-end">
-                  <span className="text-foreground font-medium">Retorno total</span>
-                  <span className="text-2xl font-bold text-secondary">{fmt(totalModerado)}</span>
+                  <span className="text-foreground font-medium">Lucro total</span>
+                  <span className="text-2xl font-bold text-secondary">{fmt(lucroTotalModerado)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">ROI</span>
@@ -130,13 +145,28 @@ const SimulatorSection = () => {
             </div>
           </div>
 
+          {/* Exit strategy highlight */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-8 bg-card rounded-2xl p-6 md:p-8 shadow-card border-2 border-accent"
+          >
+            <h3 className="font-display font-bold text-lg text-foreground mb-3">🏠 Estratégia de saída após 3 anos</h3>
+            <p className="font-body text-muted-foreground leading-relaxed">
+              Após os 3 anos de operação, você poderá <strong className="text-foreground">vender o imóvel valorizado de 50% a 80%</strong> sobre o valor investido. 
+              Isso significa que, além de ter recebido renda recorrente durante todo o período, você ainda lucra com a venda do ativo — 
+              transformando R$ 500.000 investidos em até <strong className="text-foreground">{fmt(inv.value * 0.8 + (receitaMensalModerado * 36) + inv.value)}</strong> de patrimônio total gerado.
+            </p>
+          </motion.div>
+
           {/* Extra metrics */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
             {[
               { label: "TIR estimada", value: "28% a.a." },
               { label: "Payback", value: "~2,5 anos" },
               { label: "Tesouro Selic (3 anos)", value: fmt(150000 * inv.units) },
-              { label: "Ibiunature (3 anos)", value: fmt(totalModerado) },
+              { label: "Ibiunature (3 anos)", value: fmt(lucroTotalModerado) },
             ].map((m) => (
               <div key={m.label} className="bg-card rounded-xl p-4 shadow-card border border-border text-center">
                 <p className="text-xs text-muted-foreground font-body mb-1">{m.label}</p>
