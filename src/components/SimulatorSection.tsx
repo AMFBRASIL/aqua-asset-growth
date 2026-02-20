@@ -69,95 +69,191 @@ const SimulatorSection = () => {
             ))}
           </div>
 
-          {/* Results */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Conservative */}
-            <div className="bg-card rounded-2xl p-8 shadow-card border border-border">
-              <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold font-body tracking-wider uppercase mb-6 bg-primary text-primary-foreground">
-                Conservador
-              </span>
-              <div className="space-y-4 font-body">
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Receita mensal (locação)</span>
-                  <span className="font-semibold text-foreground">{fmt(receitaMensalConservador)}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Renda locação em 3 anos</span>
-                  <span className="font-semibold text-foreground">{fmt(lucroRendaConservador)}</span>
-                </div>
-                <div className="h-px bg-border" />
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Valorização do imóvel (50%)</span>
-                  <span className="font-semibold text-foreground">{fmt(valorizacaoConservador)}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Valor de venda após 3 anos</span>
-                  <span className="font-semibold text-foreground">{fmt(valorVendaConservador)}</span>
-                </div>
-                <div className="h-px bg-border" />
-                <div className="flex justify-between items-end">
-                  <span className="text-foreground font-medium">Lucro total</span>
-                  <span className="text-2xl font-bold text-primary">{fmt(lucroTotalConservador)}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">ROI</span>
-                  <span className="font-bold text-primary">{roiConservador}%</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Moderate */}
-            <div className="bg-card rounded-2xl p-8 shadow-card border-2 border-secondary relative overflow-hidden">
-              <div className="absolute top-0 right-0 bg-secondary text-secondary-foreground text-xs font-body font-semibold px-3 py-1 rounded-bl-lg">
-                Recomendado
-              </div>
-              <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold font-body tracking-wider uppercase mb-6 bg-secondary text-secondary-foreground">
-                Moderado
-              </span>
-              <div className="space-y-4 font-body">
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Receita mensal (locação)</span>
-                  <span className="font-semibold text-foreground">{fmt(receitaMensalModerado)}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Renda locação em 3 anos</span>
-                  <span className="font-semibold text-foreground">{fmt(lucroRendaModerado)}</span>
-                </div>
-                <div className="h-px bg-border" />
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Valorização do imóvel (80%)</span>
-                  <span className="font-semibold text-foreground">{fmt(valorizacaoModerado)}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">Valor de venda após 3 anos</span>
-                  <span className="font-semibold text-foreground">{fmt(valorVendaModerado)}</span>
-                </div>
-                <div className="h-px bg-border" />
-                <div className="flex justify-between items-end">
-                  <span className="text-foreground font-medium">Lucro total</span>
-                  <span className="text-2xl font-bold text-secondary">{fmt(lucroTotalModerado)}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-muted-foreground">ROI</span>
-                  <span className="font-bold text-secondary">{roiModerado}%</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Exit strategy highlight */}
+          {/* BLOCO 1 — Renda com Locação (3 anos) */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mt-8 bg-card rounded-2xl p-6 md:p-8 shadow-card border-2 border-accent"
+            className="mb-8"
           >
-            <h3 className="font-display font-bold text-lg text-foreground mb-3">🏠 Estratégia de saída após 3 anos</h3>
-            <p className="font-body text-muted-foreground leading-relaxed">
-              Após os 3 anos de operação, você poderá <strong className="text-foreground">vender o imóvel valorizado de 50% a 80%</strong> sobre o valor investido. 
-              Isso significa que, além de ter recebido renda recorrente durante todo o período, você ainda lucra com a venda do ativo — 
-              transformando R$ 500.000 investidos em até <strong className="text-foreground">{fmt(inv.value * 0.8 + (receitaMensalModerado * 36) + inv.value)}</strong> de patrimônio total gerado.
-            </p>
+            <h3 className="font-display font-bold text-xl text-foreground mb-2 flex items-center gap-2">
+              🏨 <span>Lucro com Renda de Locação</span>
+            </h3>
+            <p className="text-muted-foreground font-body text-sm mb-6">Receita acumulada alugando o imóvel por temporada durante 3 anos.</p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Conservador - Renda */}
+              <div className="bg-card rounded-2xl p-8 shadow-card border border-border">
+                <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold font-body tracking-wider uppercase mb-6 bg-primary text-primary-foreground">
+                  Conservador
+                </span>
+                <div className="space-y-4 font-body">
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Receita mensal</span>
+                    <span className="font-semibold text-foreground">{fmt(receitaMensalConservador)}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Receita anual</span>
+                    <span className="font-semibold text-foreground">{fmt(receitaMensalConservador * 12)}</span>
+                  </div>
+                  <div className="h-px bg-border" />
+                  <div className="flex justify-between items-end">
+                    <span className="text-foreground font-medium">Lucro de renda em 3 anos</span>
+                    <span className="text-2xl font-bold text-primary">{fmt(lucroRendaConservador)}</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Moderado - Renda */}
+              <div className="bg-card rounded-2xl p-8 shadow-card border-2 border-secondary relative overflow-hidden">
+                <div className="absolute top-0 right-0 bg-secondary text-secondary-foreground text-xs font-body font-semibold px-3 py-1 rounded-bl-lg">
+                  Recomendado
+                </div>
+                <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold font-body tracking-wider uppercase mb-6 bg-secondary text-secondary-foreground">
+                  Moderado
+                </span>
+                <div className="space-y-4 font-body">
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Receita mensal</span>
+                    <span className="font-semibold text-foreground">{fmt(receitaMensalModerado)}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Receita anual</span>
+                    <span className="font-semibold text-foreground">{fmt(receitaMensalModerado * 12)}</span>
+                  </div>
+                  <div className="h-px bg-border" />
+                  <div className="flex justify-between items-end">
+                    <span className="text-foreground font-medium">Lucro de renda em 3 anos</span>
+                    <span className="text-2xl font-bold text-secondary">{fmt(lucroRendaModerado)}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* BLOCO 2 — Lucro com Venda do Imóvel */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-8"
+          >
+            <h3 className="font-display font-bold text-xl text-foreground mb-2 flex items-center gap-2">
+              🏠 <span>Lucro com Venda do Imóvel (após 3 anos)</span>
+            </h3>
+            <p className="text-muted-foreground font-body text-sm mb-6">Valorização estimada de 50% a 80% sobre o valor investido.</p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Conservador - Venda */}
+              <div className="bg-card rounded-2xl p-8 shadow-card border border-border">
+                <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold font-body tracking-wider uppercase mb-6 bg-primary text-primary-foreground">
+                  Conservador (50%)
+                </span>
+                <div className="space-y-4 font-body">
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Valor investido</span>
+                    <span className="font-semibold text-foreground">{fmt(inv.value)}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Valorização (50%)</span>
+                    <span className="font-semibold text-primary">{fmt(valorizacaoConservador)}</span>
+                  </div>
+                  <div className="h-px bg-border" />
+                  <div className="flex justify-between items-end">
+                    <span className="text-foreground font-medium">Valor de venda</span>
+                    <span className="text-2xl font-bold text-primary">{fmt(valorVendaConservador)}</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Moderado - Venda */}
+              <div className="bg-card rounded-2xl p-8 shadow-card border-2 border-secondary relative overflow-hidden">
+                <div className="absolute top-0 right-0 bg-secondary text-secondary-foreground text-xs font-body font-semibold px-3 py-1 rounded-bl-lg">
+                  Recomendado
+                </div>
+                <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold font-body tracking-wider uppercase mb-6 bg-secondary text-secondary-foreground">
+                  Moderado (80%)
+                </span>
+                <div className="space-y-4 font-body">
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Valor investido</span>
+                    <span className="font-semibold text-foreground">{fmt(inv.value)}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Valorização (80%)</span>
+                    <span className="font-semibold text-secondary">{fmt(valorizacaoModerado)}</span>
+                  </div>
+                  <div className="h-px bg-border" />
+                  <div className="flex justify-between items-end">
+                    <span className="text-foreground font-medium">Valor de venda</span>
+                    <span className="text-2xl font-bold text-secondary">{fmt(valorVendaModerado)}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* BLOCO 3 — Resultado Final Combinado */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-card rounded-2xl p-8 shadow-card border-2 border-accent"
+          >
+            <h3 className="font-display font-bold text-xl text-foreground mb-2 flex items-center gap-2">
+              💰 <span>Resultado Total — Renda + Venda</span>
+            </h3>
+            <p className="text-muted-foreground font-body text-sm mb-6">Lucro total combinando a renda de locação dos 3 anos com a venda do imóvel valorizado.</p>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Conservador - Total */}
+              <div className="bg-muted/50 rounded-xl p-6 border border-border">
+                <span className="text-xs font-semibold font-body tracking-wider uppercase text-primary mb-4 block">Conservador</span>
+                <div className="space-y-3 font-body text-sm">
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Renda locação (3 anos)</span>
+                    <span className="font-semibold text-foreground">{fmt(lucroRendaConservador)}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Lucro na venda (valorização)</span>
+                    <span className="font-semibold text-foreground">{fmt(valorizacaoConservador)}</span>
+                  </div>
+                  <div className="h-px bg-border" />
+                  <div className="flex justify-between items-end">
+                    <span className="text-foreground font-bold">Lucro total</span>
+                    <span className="text-2xl font-bold text-primary">{fmt(lucroTotalConservador)}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">ROI total</span>
+                    <span className="font-bold text-primary">{roiConservador}%</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Moderado - Total */}
+              <div className="bg-muted/50 rounded-xl p-6 border-2 border-secondary">
+                <span className="text-xs font-semibold font-body tracking-wider uppercase text-secondary mb-4 block">Moderado (Recomendado)</span>
+                <div className="space-y-3 font-body text-sm">
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Renda locação (3 anos)</span>
+                    <span className="font-semibold text-foreground">{fmt(lucroRendaModerado)}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Lucro na venda (valorização)</span>
+                    <span className="font-semibold text-foreground">{fmt(valorizacaoModerado)}</span>
+                  </div>
+                  <div className="h-px bg-border" />
+                  <div className="flex justify-between items-end">
+                    <span className="text-foreground font-bold">Lucro total</span>
+                    <span className="text-2xl font-bold text-secondary">{fmt(lucroTotalModerado)}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">ROI total</span>
+                    <span className="font-bold text-secondary">{roiModerado}%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </motion.div>
 
           {/* Extra metrics */}
