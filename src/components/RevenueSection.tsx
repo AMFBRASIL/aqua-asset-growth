@@ -7,11 +7,12 @@ const scenarioData = [
 ];
 
 const tableData = [
-  { label: "Receita Bruta Anual", conservador: "R$ 120.000", moderado: "R$ 144.000" },
-  { label: "Receita em 3 anos", conservador: "R$ 360.000", moderado: "R$ 432.000" },
-  { label: "Valorização estimada (20%)", conservador: "R$ 100.000", moderado: "R$ 100.000" },
-  { label: "Retorno total em 3 anos", conservador: "R$ 460.000", moderado: "R$ 532.000" },
-  { label: "ROI em 3 anos", conservador: "92%", moderado: "106%" },
+  { label: "Receita Bruta Anual (locação)", conservador: "R$ 120.000", moderado: "R$ 144.000" },
+  { label: "Receita locação em 3 anos", conservador: "R$ 360.000", moderado: "R$ 432.000" },
+  { label: "Valorização do imóvel (50% a 80%)", conservador: "R$ 250.000 (50%)", moderado: "R$ 400.000 (80%)" },
+  { label: "Valor de venda após 3 anos", conservador: "R$ 750.000", moderado: "R$ 900.000" },
+  { label: "Lucro total (renda + venda)", conservador: "R$ 610.000", moderado: "R$ 832.000" },
+  { label: "ROI total em 3 anos", conservador: "122%", moderado: "166%" },
 ];
 
 const formatCurrency = (value: number) =>
