@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Building2, Users, DollarSign, Calendar } from "lucide-react";
 
 const items = [
-  { icon: DollarSign, label: "Investimento mínimo", value: "R$ 500.000" },
+  { icon: DollarSign, label: "Investimento mínimo", value: "R$ 650.000" },
   { icon: Building2, label: "Área por unidade", value: "160m²" },
   { icon: Users, label: "Capacidade", value: "Até 10 hóspedes" },
   { icon: Calendar, label: "Operação", value: "Locação por temporada" },
@@ -10,7 +10,7 @@ const items = [
 
 const InvestmentSection = () => {
   return (
-    <section className="py-24 bg-background">
+    <section id="investimento" className="py-24 bg-background">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -35,13 +35,13 @@ const InvestmentSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-card rounded-xl p-6 shadow-card text-center border border-border hover:shadow-premium transition-shadow duration-300"
+              className="bg-card rounded-2xl p-8 shadow-card text-center border border-border hover:shadow-premium transition-all duration-300 hover:-translate-y-1"
             >
-              <div className="w-14 h-14 rounded-xl bg-gradient-nature flex items-center justify-center mx-auto mb-4">
-                <item.icon className="w-7 h-7 text-primary-foreground" />
+              <div className="w-16 h-16 rounded-2xl bg-gradient-nature flex items-center justify-center mx-auto mb-5">
+                <item.icon className="w-8 h-8 text-primary-foreground" />
               </div>
-              <p className="text-sm text-muted-foreground font-body mb-1">{item.label}</p>
-              <p className="text-xl font-bold text-foreground">{item.value}</p>
+              <p className="text-sm text-muted-foreground font-body mb-2">{item.label}</p>
+              <p className="text-2xl font-bold text-foreground">{item.value}</p>
             </motion.div>
           ))}
         </div>
@@ -56,7 +56,7 @@ const InvestmentSection = () => {
           <h3 className="text-xl font-bold text-foreground mb-4 font-display">Como funciona?</h3>
           <div className="space-y-4 font-body text-muted-foreground leading-relaxed">
             <p>
-              O investidor adquire <strong className="text-foreground">1 ou 2 unidades</strong> (R$ 500.000 cada) dentro do Ibiunature Aqua Clube.
+              O investidor adquire <strong className="text-foreground">1 ou 2 unidades</strong> (R$ 650.000 cada) dentro do Ibiunature Aqua Clube.
             </p>
             <p>
               Durante <strong className="text-foreground">3 anos</strong>, o imóvel é operado via locação por temporada através de channels managers (Airbnb, Booking, etc.) até a regularização final da documentação.

@@ -2,9 +2,9 @@ import { motion } from "framer-motion";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from "recharts";
 
 const comparisonData = [
-  { name: "CDI (10% a.a.)", anual: 50000, tresAnos: 150000 },
-  { name: "Ibiunature\n(Conservador)", anual: 120000, tresAnos: 360000 },
-  { name: "Ibiunature\n(Moderado)", anual: 144000, tresAnos: 432000 },
+  { name: "CDI (10% a.a.)", anual: 65000, tresAnos: 195000 },
+  { name: "Ibiunature (Conservador)", anual: 120000, tresAnos: 360000 },
+  { name: "Ibiunature (Moderado)", anual: 144000, tresAnos: 432000 },
 ];
 
 const formatCurrency = (value: number) => `R$ ${(value / 1000).toFixed(0)}k`;
@@ -23,7 +23,7 @@ const CDIComparisonSection = () => {
             Comparativo com <span className="text-gradient-nature">CDI</span>
           </h2>
           <p className="text-muted-foreground font-body max-w-2xl mx-auto text-lg">
-            Investimento de R$ 500.000 — veja a diferença entre deixar no banco e investir em um ativo real.
+            Investimento de R$ 650.000 — veja a diferença entre deixar no banco e investir em um ativo real.
           </p>
         </motion.div>
 
@@ -38,7 +38,7 @@ const CDIComparisonSection = () => {
               <CartesianGrid strokeDasharray="3 3" stroke="hsl(150, 15%, 88%)" />
               <XAxis
                 dataKey="name"
-                tick={{ fill: "hsl(200, 10%, 40%)", fontSize: 12, fontFamily: "Inter" }}
+                tick={{ fill: "hsl(200, 10%, 40%)", fontSize: 11, fontFamily: "Inter" }}
                 axisLine={{ stroke: "hsl(150, 15%, 88%)" }}
               />
               <YAxis

@@ -2,8 +2,8 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 
 const options = [
-  { label: "R$ 500.000", value: 500000, units: 1 },
-  { label: "R$ 1.000.000", value: 1000000, units: 2 },
+  { label: "R$ 650.000", value: 650000, units: 1 },
+  { label: "R$ 1.300.000", value: 1300000, units: 2 },
 ];
 
 const SimulatorSection = () => {
@@ -69,136 +69,57 @@ const SimulatorSection = () => {
             ))}
           </div>
 
-          {/* BLOCO 1 — Renda com Locação (3 anos) */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-8"
-          >
+          {/* BLOCO 1 — Renda com Locação */}
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8">
             <h3 className="font-display font-bold text-xl text-foreground mb-2 flex items-center gap-2">
               🏨 <span>Lucro com Renda de Locação</span>
             </h3>
             <p className="text-muted-foreground font-body text-sm mb-6">Receita acumulada alugando o imóvel por temporada durante 3 anos.</p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Conservador - Renda */}
-              <div className="bg-card rounded-2xl p-8 shadow-card border border-border">
-                <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold font-body tracking-wider uppercase mb-6 bg-primary text-primary-foreground">
-                  Conservador
-                </span>
-                <div className="space-y-4 font-body">
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Receita mensal</span>
-                    <span className="font-semibold text-foreground">{fmt(receitaMensalConservador)}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Receita anual</span>
-                    <span className="font-semibold text-foreground">{fmt(receitaMensalConservador * 12)}</span>
-                  </div>
-                  <div className="h-px bg-border" />
-                  <div className="flex justify-between items-end">
-                    <span className="text-foreground font-medium">Lucro de renda em 3 anos</span>
-                    <span className="text-2xl font-bold text-primary">{fmt(lucroRendaConservador)}</span>
-                  </div>
-                </div>
-              </div>
+              <SimCard label="Conservador" variant="primary">
+                <SimRow label="Receita mensal" value={fmt(receitaMensalConservador)} />
+                <SimRow label="Receita anual" value={fmt(receitaMensalConservador * 12)} />
+                <SimDivider />
+                <SimTotal label="Lucro de renda em 3 anos" value={fmt(lucroRendaConservador)} variant="primary" />
+              </SimCard>
 
-              {/* Moderado - Renda */}
-              <div className="bg-card rounded-2xl p-8 shadow-card border-2 border-secondary relative overflow-hidden">
-                <div className="absolute top-0 right-0 bg-secondary text-secondary-foreground text-xs font-body font-semibold px-3 py-1 rounded-bl-lg">
-                  Recomendado
-                </div>
-                <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold font-body tracking-wider uppercase mb-6 bg-secondary text-secondary-foreground">
-                  Moderado
-                </span>
-                <div className="space-y-4 font-body">
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Receita mensal</span>
-                    <span className="font-semibold text-foreground">{fmt(receitaMensalModerado)}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Receita anual</span>
-                    <span className="font-semibold text-foreground">{fmt(receitaMensalModerado * 12)}</span>
-                  </div>
-                  <div className="h-px bg-border" />
-                  <div className="flex justify-between items-end">
-                    <span className="text-foreground font-medium">Lucro de renda em 3 anos</span>
-                    <span className="text-2xl font-bold text-secondary">{fmt(lucroRendaModerado)}</span>
-                  </div>
-                </div>
-              </div>
+              <SimCard label="Moderado" variant="secondary" recommended>
+                <SimRow label="Receita mensal" value={fmt(receitaMensalModerado)} />
+                <SimRow label="Receita anual" value={fmt(receitaMensalModerado * 12)} />
+                <SimDivider />
+                <SimTotal label="Lucro de renda em 3 anos" value={fmt(lucroRendaModerado)} variant="secondary" />
+              </SimCard>
             </div>
           </motion.div>
 
-          {/* BLOCO 2 — Lucro com Venda do Imóvel */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-8"
-          >
+          {/* BLOCO 2 — Lucro com Venda */}
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-8">
             <h3 className="font-display font-bold text-xl text-foreground mb-2 flex items-center gap-2">
               🏠 <span>Lucro com Venda do Imóvel (após 3 anos)</span>
             </h3>
             <p className="text-muted-foreground font-body text-sm mb-6">Valorização estimada de 50% a 80% sobre o valor investido.</p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Conservador - Venda */}
-              <div className="bg-card rounded-2xl p-8 shadow-card border border-border">
-                <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold font-body tracking-wider uppercase mb-6 bg-primary text-primary-foreground">
-                  Conservador (50%)
-                </span>
-                <div className="space-y-4 font-body">
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Valor investido</span>
-                    <span className="font-semibold text-foreground">{fmt(inv.value)}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Valorização (50%)</span>
-                    <span className="font-semibold text-primary">{fmt(valorizacaoConservador)}</span>
-                  </div>
-                  <div className="h-px bg-border" />
-                  <div className="flex justify-between items-end">
-                    <span className="text-foreground font-medium">Valor de venda</span>
-                    <span className="text-2xl font-bold text-primary">{fmt(valorVendaConservador)}</span>
-                  </div>
-                </div>
-              </div>
+              <SimCard label="Conservador (50%)" variant="primary">
+                <SimRow label="Valor investido" value={fmt(inv.value)} />
+                <SimRow label="Valorização (50%)" value={fmt(valorizacaoConservador)} highlight="primary" />
+                <SimDivider />
+                <SimTotal label="Valor de venda" value={fmt(valorVendaConservador)} variant="primary" />
+              </SimCard>
 
-              {/* Moderado - Venda */}
-              <div className="bg-card rounded-2xl p-8 shadow-card border-2 border-secondary relative overflow-hidden">
-                <div className="absolute top-0 right-0 bg-secondary text-secondary-foreground text-xs font-body font-semibold px-3 py-1 rounded-bl-lg">
-                  Recomendado
-                </div>
-                <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold font-body tracking-wider uppercase mb-6 bg-secondary text-secondary-foreground">
-                  Moderado (80%)
-                </span>
-                <div className="space-y-4 font-body">
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Valor investido</span>
-                    <span className="font-semibold text-foreground">{fmt(inv.value)}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Valorização (80%)</span>
-                    <span className="font-semibold text-secondary">{fmt(valorizacaoModerado)}</span>
-                  </div>
-                  <div className="h-px bg-border" />
-                  <div className="flex justify-between items-end">
-                    <span className="text-foreground font-medium">Valor de venda</span>
-                    <span className="text-2xl font-bold text-secondary">{fmt(valorVendaModerado)}</span>
-                  </div>
-                </div>
-              </div>
+              <SimCard label="Moderado (80%)" variant="secondary" recommended>
+                <SimRow label="Valor investido" value={fmt(inv.value)} />
+                <SimRow label="Valorização (80%)" value={fmt(valorizacaoModerado)} highlight="secondary" />
+                <SimDivider />
+                <SimTotal label="Valor de venda" value={fmt(valorVendaModerado)} variant="secondary" />
+              </SimCard>
             </div>
           </motion.div>
 
-          {/* BLOCO 3 — Resultado Final Combinado */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="bg-card rounded-2xl p-8 shadow-card border-2 border-accent"
+          {/* BLOCO 3 — Resultado Total */}
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+            className="bg-card rounded-2xl p-8 shadow-premium border-2 border-accent"
           >
             <h3 className="font-display font-bold text-xl text-foreground mb-2 flex items-center gap-2">
               💰 <span>Resultado Total — Renda + Venda</span>
@@ -206,23 +127,13 @@ const SimulatorSection = () => {
             <p className="text-muted-foreground font-body text-sm mb-6">Lucro total combinando a renda de locação dos 3 anos com a venda do imóvel valorizado.</p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Conservador - Total */}
               <div className="bg-muted/50 rounded-xl p-6 border border-border">
                 <span className="text-xs font-semibold font-body tracking-wider uppercase text-primary mb-4 block">Conservador</span>
                 <div className="space-y-3 font-body text-sm">
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Renda locação (3 anos)</span>
-                    <span className="font-semibold text-foreground">{fmt(lucroRendaConservador)}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Lucro na venda (valorização)</span>
-                    <span className="font-semibold text-foreground">{fmt(valorizacaoConservador)}</span>
-                  </div>
-                  <div className="h-px bg-border" />
-                  <div className="flex justify-between items-end">
-                    <span className="text-foreground font-bold">Lucro total</span>
-                    <span className="text-2xl font-bold text-primary">{fmt(lucroTotalConservador)}</span>
-                  </div>
+                  <SimRow label="Renda locação (3 anos)" value={fmt(lucroRendaConservador)} />
+                  <SimRow label="Lucro na venda (valorização)" value={fmt(valorizacaoConservador)} />
+                  <SimDivider />
+                  <SimTotal label="Lucro total" value={fmt(lucroTotalConservador)} variant="primary" />
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">ROI total</span>
                     <span className="font-bold text-primary">{roiConservador}%</span>
@@ -230,23 +141,13 @@ const SimulatorSection = () => {
                 </div>
               </div>
 
-              {/* Moderado - Total */}
               <div className="bg-muted/50 rounded-xl p-6 border-2 border-secondary">
                 <span className="text-xs font-semibold font-body tracking-wider uppercase text-secondary mb-4 block">Moderado (Recomendado)</span>
                 <div className="space-y-3 font-body text-sm">
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Renda locação (3 anos)</span>
-                    <span className="font-semibold text-foreground">{fmt(lucroRendaModerado)}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Lucro na venda (valorização)</span>
-                    <span className="font-semibold text-foreground">{fmt(valorizacaoModerado)}</span>
-                  </div>
-                  <div className="h-px bg-border" />
-                  <div className="flex justify-between items-end">
-                    <span className="text-foreground font-bold">Lucro total</span>
-                    <span className="text-2xl font-bold text-secondary">{fmt(lucroTotalModerado)}</span>
-                  </div>
+                  <SimRow label="Renda locação (3 anos)" value={fmt(lucroRendaModerado)} />
+                  <SimRow label="Lucro na venda (valorização)" value={fmt(valorizacaoModerado)} />
+                  <SimDivider />
+                  <SimTotal label="Lucro total" value={fmt(lucroTotalModerado)} variant="secondary" />
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">ROI total</span>
                     <span className="font-bold text-secondary">{roiModerado}%</span>
@@ -261,10 +162,10 @@ const SimulatorSection = () => {
             {[
               { label: "TIR estimada", value: "28% a.a." },
               { label: "Payback", value: "~2,5 anos" },
-              { label: "Tesouro Selic (3 anos)", value: fmt(150000 * inv.units) },
+              { label: "Tesouro Selic (3 anos)", value: fmt(195000 * inv.units) },
               { label: "Ibiunature (3 anos)", value: fmt(lucroTotalModerado) },
             ].map((m) => (
-              <div key={m.label} className="bg-card rounded-xl p-4 shadow-card border border-border text-center">
+              <div key={m.label} className="bg-card rounded-xl p-5 shadow-card border border-border text-center hover:shadow-premium transition-shadow">
                 <p className="text-xs text-muted-foreground font-body mb-1">{m.label}</p>
                 <p className="text-lg font-bold text-foreground">{m.value}</p>
               </div>
@@ -275,5 +176,40 @@ const SimulatorSection = () => {
     </section>
   );
 };
+
+/* Sub-components */
+const SimCard = ({ label, variant, recommended, children }: {
+  label: string; variant: "primary" | "secondary"; recommended?: boolean; children: React.ReactNode;
+}) => (
+  <div className={`bg-card rounded-2xl p-8 shadow-card border${recommended ? "-2 border-secondary relative overflow-hidden" : " border-border"}`}>
+    {recommended && (
+      <div className="absolute top-0 right-0 bg-secondary text-secondary-foreground text-xs font-body font-semibold px-3 py-1 rounded-bl-lg">
+        Recomendado
+      </div>
+    )}
+    <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold font-body tracking-wider uppercase mb-6 ${
+      variant === "primary" ? "bg-primary text-primary-foreground" : "bg-secondary text-secondary-foreground"
+    }`}>
+      {label}
+    </span>
+    <div className="space-y-4 font-body">{children}</div>
+  </div>
+);
+
+const SimRow = ({ label, value, highlight }: { label: string; value: string; highlight?: "primary" | "secondary" }) => (
+  <div className="flex justify-between">
+    <span className="text-muted-foreground">{label}</span>
+    <span className={`font-semibold ${highlight === "primary" ? "text-primary" : highlight === "secondary" ? "text-secondary" : "text-foreground"}`}>{value}</span>
+  </div>
+);
+
+const SimDivider = () => <div className="h-px bg-border" />;
+
+const SimTotal = ({ label, value, variant }: { label: string; value: string; variant: "primary" | "secondary" }) => (
+  <div className="flex justify-between items-end">
+    <span className="text-foreground font-medium">{label}</span>
+    <span className={`text-2xl font-bold ${variant === "primary" ? "text-primary" : "text-secondary"}`}>{value}</span>
+  </div>
+);
 
 export default SimulatorSection;

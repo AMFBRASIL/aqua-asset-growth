@@ -1,5 +1,6 @@
 import HeroSection from "@/components/HeroSection";
 import InvestmentSection from "@/components/InvestmentSection";
+import GallerySection from "@/components/GallerySection";
 import RevenueSection from "@/components/RevenueSection";
 import CDIComparisonSection from "@/components/CDIComparisonSection";
 import SecuritySection from "@/components/SecuritySection";
@@ -12,6 +13,7 @@ const Index = () => {
     <div className="min-h-screen">
       <HeroSection />
       <InvestmentSection />
+      <GallerySection />
       <RevenueSection />
       <CDIComparisonSection />
       <SecuritySection />
