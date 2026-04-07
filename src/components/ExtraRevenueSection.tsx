@@ -96,7 +96,7 @@ const ExtraRevenueSection = () => {
         </motion.div>
 
         {/* Cards dos espaços */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
           {venues.map((venue, i) => (
             <motion.div
               key={venue.title}
