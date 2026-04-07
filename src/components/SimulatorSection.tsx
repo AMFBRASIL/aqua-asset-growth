@@ -17,10 +17,15 @@ const SimulatorSection = () => {
   const valorVendaConservador = inv.value + valorizacaoConservador;
   const valorVendaModerado = inv.value + valorizacaoModerado;
 
+  // Receitas extras: 30 consumidores/fds × tickets (churrasco 45 + chopp 30 + mercado 35 + bar 50) × 4 semanas
+  const receitaExtraMensal = 30 * (45 + 30 + 35 + 50) * 4; // R$ 19.200/mês por unidade operacional
+  const receitaExtraMensalInvestidor = receitaExtraMensal * inv.units;
+  const receitaExtra3anos = receitaExtraMensalInvestidor * 36;
+
   const lucroRendaConservador = receitaMensalConservador * 36;
   const lucroRendaModerado = receitaMensalModerado * 36;
-  const lucroTotalConservador = lucroRendaConservador + valorizacaoConservador;
-  const lucroTotalModerado = lucroRendaModerado + valorizacaoModerado;
+  const lucroTotalConservador = lucroRendaConservador + valorizacaoConservador + receitaExtra3anos;
+  const lucroTotalModerado = lucroRendaModerado + valorizacaoModerado + receitaExtra3anos;
   const roiConservador = ((lucroTotalConservador / inv.value) * 100).toFixed(0);
   const roiModerado = ((lucroTotalModerado / inv.value) * 100).toFixed(0);
 
@@ -125,15 +130,16 @@ const SimulatorSection = () => {
             className="bg-card rounded-2xl p-8 shadow-premium border-2 border-accent"
           >
             <h3 className="font-display font-bold text-xl text-foreground mb-2 flex items-center gap-2">
-              💰 <span>Resultado Total — Renda + Venda</span>
+              💰 <span>Resultado Total — Locação + Receitas Extras + Venda</span>
             </h3>
-            <p className="text-muted-foreground font-body text-sm mb-6">Lucro total combinando a renda de locação dos 3 anos com a venda do imóvel valorizado.</p>
+            <p className="text-muted-foreground font-body text-sm mb-6">Lucro total combinando a renda de locação, receitas extras (churrasqueira, bar, mini mercado) e a venda do imóvel valorizado em 3 anos.</p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-muted/50 rounded-xl p-6 border border-border">
                 <span className="text-xs font-semibold font-body tracking-wider uppercase text-primary mb-4 block">Conservador</span>
                 <div className="space-y-3 font-body text-sm">
                   <SimRow label="Renda locação (3 anos)" value={fmt(lucroRendaConservador)} />
+                  <SimRow label="Receitas extras (3 anos)" value={fmt(receitaExtra3anos)} highlight="primary" />
                   <SimRow label="Lucro na venda (valorização)" value={fmt(valorizacaoConservador)} />
                   <SimDivider />
                   <SimTotal label="Lucro total" value={fmt(lucroTotalConservador)} variant="primary" />
@@ -148,6 +154,7 @@ const SimulatorSection = () => {
                 <span className="text-xs font-semibold font-body tracking-wider uppercase text-secondary mb-4 block">Moderado (Recomendado)</span>
                 <div className="space-y-3 font-body text-sm">
                   <SimRow label="Renda locação (3 anos)" value={fmt(lucroRendaModerado)} />
+                  <SimRow label="Receitas extras (3 anos)" value={fmt(receitaExtra3anos)} highlight="secondary" />
                   <SimRow label="Lucro na venda (valorização)" value={fmt(valorizacaoModerado)} />
                   <SimDivider />
                   <SimTotal label="Lucro total" value={fmt(lucroTotalModerado)} variant="secondary" />
