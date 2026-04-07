@@ -130,9 +130,9 @@ const SimulatorSection = () => {
             className="bg-card rounded-2xl p-8 shadow-premium border-2 border-accent"
           >
             <h3 className="font-display font-bold text-xl text-foreground mb-2 flex items-center gap-2">
-              💰 <span>Resultado Total — Renda + Venda</span>
+              💰 <span>Resultado Total — Locação + Receitas Extras + Venda</span>
             </h3>
-            <p className="text-muted-foreground font-body text-sm mb-6">Lucro total combinando a renda de locação dos 3 anos com a venda do imóvel valorizado.</p>
+            <p className="text-muted-foreground font-body text-sm mb-6">Lucro total combinando a renda de locação, receitas extras (churrasqueira, bar, mini mercado) e a venda do imóvel valorizado em 3 anos.</p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-muted/50 rounded-xl p-6 border border-border">
