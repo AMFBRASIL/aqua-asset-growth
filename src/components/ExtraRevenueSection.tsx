@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
-import { Flame, ShoppingCart, Beer, Users, DollarSign, TrendingUp } from "lucide-react";
+import { Flame, ShoppingCart, Beer, Users, DollarSign, TrendingUp, Tv } from "lucide-react";
 import churrasqueiraImg from "@/assets/churrasqueira-bar.jpg";
 import selfmartImg from "@/assets/selfmart.jpg";
+import barAmericanoImg from "@/assets/bar-americano.jpg";
 
 const ExtraRevenueSection = () => {
   // 6 aptos × 10 pessoas = 60 hóspedes, metade consome = 30 pessoas
@@ -10,11 +11,13 @@ const ExtraRevenueSection = () => {
   const ticketMedioChurrasco = 45;
   const ticketMedioChopp = 30;
   const ticketMedioMercado = 35;
+  const ticketMedioBar = 50;
 
   const receitaChurrascoFds = consumidores * ticketMedioChurrasco;
   const receitaChoppFds = consumidores * ticketMedioChopp;
   const receitaMercadoFds = consumidores * ticketMedioMercado;
-  const totalFds = receitaChurrascoFds + receitaChoppFds + receitaMercadoFds;
+  const receitaBarFds = consumidores * ticketMedioBar;
+  const totalFds = receitaChurrascoFds + receitaChoppFds + receitaMercadoFds + receitaBarFds;
   const totalMensal = totalFds * 4;
   const totalAnual = totalMensal * 12;
 
