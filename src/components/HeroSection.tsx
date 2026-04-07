@@ -57,10 +57,10 @@ const HeroSection = () => {
               Quero Receber o Estudo Financeiro
             </a>
             <a
-              href="#galeria"
+              href="/alugar"
               className="inline-flex items-center justify-center gap-2 px-10 py-4 bg-primary-foreground/10 backdrop-blur-sm text-primary-foreground font-body font-semibold rounded-xl text-lg border border-primary-foreground/25 hover:bg-primary-foreground/20 transition-all duration-300"
             >
-              Ver o Empreendimento
+              Quero Alugar por Temporada
             </a>
           </motion.div>
 
