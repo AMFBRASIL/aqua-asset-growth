@@ -154,6 +154,7 @@ const SimulatorSection = () => {
                 <span className="text-xs font-semibold font-body tracking-wider uppercase text-secondary mb-4 block">Moderado (Recomendado)</span>
                 <div className="space-y-3 font-body text-sm">
                   <SimRow label="Renda locação (3 anos)" value={fmt(lucroRendaModerado)} />
+                  <SimRow label="Receitas extras (3 anos)" value={fmt(receitaExtra3anos)} highlight="secondary" />
                   <SimRow label="Lucro na venda (valorização)" value={fmt(valorizacaoModerado)} />
                   <SimDivider />
                   <SimTotal label="Lucro total" value={fmt(lucroTotalModerado)} variant="secondary" />
