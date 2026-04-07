@@ -10,8 +10,8 @@ const SimulatorSection = () => {
   const [selected, setSelected] = useState(0);
 
   const inv = options[selected];
-  const receitaMensalConservador = inv.units * 10000;
-  const receitaMensalModerado = inv.units * 12000;
+  const receitaMensalConservador = inv.units * 14000;
+  const receitaMensalModerado = inv.units * 18000;
   const valorizacaoConservador = inv.value * 0.5;
   const valorizacaoModerado = inv.value * 0.8;
   const valorVendaConservador = inv.value + valorizacaoConservador;
