@@ -20,7 +20,7 @@ const ClosingSection = () => {
             Garanta sua participação no empreendimento que une rentabilidade, segurança e qualidade de vida.
           </p>
           <a
-            href="#simulador"
+            href="/contato"
             className="inline-flex items-center gap-2 px-10 py-5 bg-accent text-accent-foreground font-body font-bold rounded-xl text-lg shadow-premium hover:brightness-110 transition-all duration-300 hover:scale-105"
           >
             Quero participar como investidor
