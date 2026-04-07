@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
-import { Flame, ShoppingCart, Beer, Users, DollarSign, TrendingUp } from "lucide-react";
+import { Flame, ShoppingCart, Beer, Users, DollarSign, TrendingUp, Tv } from "lucide-react";
 import churrasqueiraImg from "@/assets/churrasqueira-bar.jpg";
 import selfmartImg from "@/assets/selfmart.jpg";
+import barAmericanoImg from "@/assets/bar-americano.jpg";
 
 const ExtraRevenueSection = () => {
   // 6 aptos × 10 pessoas = 60 hóspedes, metade consome = 30 pessoas
@@ -10,11 +11,13 @@ const ExtraRevenueSection = () => {
   const ticketMedioChurrasco = 45;
   const ticketMedioChopp = 30;
   const ticketMedioMercado = 35;
+  const ticketMedioBar = 50;
 
   const receitaChurrascoFds = consumidores * ticketMedioChurrasco;
   const receitaChoppFds = consumidores * ticketMedioChopp;
   const receitaMercadoFds = consumidores * ticketMedioMercado;
-  const totalFds = receitaChurrascoFds + receitaChoppFds + receitaMercadoFds;
+  const receitaBarFds = consumidores * ticketMedioBar;
+  const totalFds = receitaChurrascoFds + receitaChoppFds + receitaMercadoFds + receitaBarFds;
   const totalMensal = totalFds * 4;
   const totalAnual = totalMensal * 12;
 
@@ -43,6 +46,18 @@ const ExtraRevenueSection = () => {
       highlights: [
         { icon: ShoppingCart, label: "Consumo por fds", value: fmt(receitaMercadoFds) + "/fds" },
         { icon: DollarSign, label: "Receita mensal", value: fmt(receitaMercadoFds * 4) },
+      ],
+    },
+    {
+      title: "Bar Americano",
+      subtitle: "Chopp self-service, sinuca, mesa de air hockey e telões",
+      image: barAmericanoImg,
+      icon: Tv,
+      description:
+        "Bar estilo americano com máquinas de chopp em auto atendimento, mesa de sinuca, air hockey e telões transmitindo esportes ao vivo. Um espaço de convivência que atrai consumo e fideliza hóspedes.",
+      highlights: [
+        { icon: Beer, label: "Chopp self-service", value: fmt(receitaBarFds) + "/fds" },
+        { icon: DollarSign, label: "Receita mensal", value: fmt(receitaBarFds * 4) },
       ],
     },
   ];
@@ -81,7 +96,7 @@ const ExtraRevenueSection = () => {
         </motion.div>
 
         {/* Cards dos espaços */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
           {venues.map((venue, i) => (
             <motion.div
               key={venue.title}
@@ -147,6 +162,10 @@ const ExtraRevenueSection = () => {
             <div className="flex justify-between">
               <span className="text-muted-foreground">SelfMart — Mini Mercado (por fds)</span>
               <span className="font-semibold text-foreground">{fmt(receitaMercadoFds)}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-muted-foreground">Bar Americano — Chopp & Entretenimento (por fds)</span>
+              <span className="font-semibold text-foreground">{fmt(receitaBarFds)}</span>
             </div>
             <div className="h-px bg-border" />
             <div className="flex justify-between items-end">
