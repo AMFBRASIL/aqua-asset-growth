@@ -18,6 +18,7 @@ const Index = () => {
       <TimelapseSection />
       <GallerySection />
       <RevenueSection />
+      <ExtraRevenueSection />
       <CDIComparisonSection />
       <SecuritySection />
       <AppreciationSection />
