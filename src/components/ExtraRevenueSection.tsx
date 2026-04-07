@@ -163,6 +163,10 @@ const ExtraRevenueSection = () => {
               <span className="text-muted-foreground">SelfMart — Mini Mercado (por fds)</span>
               <span className="font-semibold text-foreground">{fmt(receitaMercadoFds)}</span>
             </div>
+            <div className="flex justify-between">
+              <span className="text-muted-foreground">Bar Americano — Chopp & Entretenimento (por fds)</span>
+              <span className="font-semibold text-foreground">{fmt(receitaBarFds)}</span>
+            </div>
             <div className="h-px bg-border" />
             <div className="flex justify-between items-end">
               <span className="text-foreground font-medium">Total por final de semana</span>
