@@ -1,5 +1,6 @@
 import HeroSection from "@/components/HeroSection";
 import InvestmentSection from "@/components/InvestmentSection";
+import WhatsAppFloat from "@/components/WhatsAppFloat";
 import TimelapseSection from "@/components/TimelapseSection";
 import GallerySection from "@/components/GallerySection";
 import RevenueSection from "@/components/RevenueSection";
