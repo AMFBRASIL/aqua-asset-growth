@@ -9,23 +9,88 @@ import { Link } from "react-router-dom";
 
 const whatsappNumber = "5511920069049";
 
+/**
+ * Em dev, sem VITE_API_URL: usa `/api/...` na mesma origem do Vite (proxy → localhost:3000).
+ * Evita ERR_CONNECTION_REFUSED quando VITE_API_URL aponta por engano para a porta do front (ex.: 8081).
+ */
+function getApiBase(): string {
+  const raw = import.meta.env.VITE_API_URL?.trim().replace(/\/$/, "") ?? "";
+  if (raw) {
+    if (import.meta.env.DEV && typeof window !== "undefined") {
+      try {
+        const apiUrl = new URL(raw);
+        const sameHost = apiUrl.hostname === window.location.hostname;
+        const apiPort = apiUrl.port || (apiUrl.protocol === "https:" ? "443" : "80");
+        const pagePort = window.location.port || (window.location.protocol === "https:" ? "443" : "80");
+        if (sameHost && apiPort === pagePort) {
+          return "";
+        }
+      } catch {
+        /* ignore URL inválida */
+      }
+    }
+    return raw;
+  }
+  if (import.meta.env.DEV) return "";
+  return "";
+}
+
 const Contato = () => {
   const { toast } = useToast();
   const [form, setForm] = useState({ nome: "", email: "", telefone: "", mensagem: "" });
   const [sending, setSending] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.nome.trim() || !form.telefone.trim()) {
       toast({ title: "Preencha ao menos nome e telefone.", variant: "destructive" });
       return;
     }
     setSending(true);
-    setTimeout(() => {
+    try {
+      const base = getApiBase();
+      const url = base ? `${base}/api/contact` : "/api/contact";
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          nome: form.nome.trim(),
+          email: form.email.trim(),
+          telefone: form.telefone.trim(),
+          mensagem: form.mensagem.trim(),
+        }),
+      });
+      const data = (await res.json().catch(() => ({}))) as { error?: string };
+      if (!res.ok) {
+        const apiDown =
+          res.status === 502 || res.status === 503 || res.status === 504;
+        toast({
+          title: "Não foi possível enviar",
+          description:
+            data.error ||
+            (apiDown
+              ? "O backend Next não está acessível na porta 3000. Em outro terminal: npm run dev:api"
+              : "Tente novamente em instantes."),
+          variant: "destructive",
+        });
+        return;
+      }
       toast({ title: "Mensagem enviada!", description: "Um consultor entrará em contato em breve." });
       setForm({ nome: "", email: "", telefone: "", mensagem: "" });
+    } catch (err) {
+      const hint =
+        import.meta.env.DEV
+          ? "Deixe o Next rodando: npm run dev:api (porta 3000). Não use VITE_API_URL com a mesma porta do Vite."
+          : "Confira se a API está no ar e se VITE_API_URL está correto.";
+      toast({
+        title: "Sem conexão com a API",
+        description: hint,
+        variant: "destructive",
+      });
+      if (import.meta.env.DEV) console.error("[contato]", err);
+    } finally {
       setSending(false);
-    }, 1200);
+    }
   };
 
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
