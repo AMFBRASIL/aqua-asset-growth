@@ -1,17 +1,17 @@
 import { motion } from "framer-motion";
 
 const scenarioData = [
-  { name: "Conservador", mensal: 10000, anual: 120000, cor: "hsl(152, 45%, 28%)" },
-  { name: "Moderado", mensal: 12000, anual: 144000, cor: "hsl(198, 60%, 42%)" },
+  { name: "Conservador", mensal: 14000, anual: 168000, cor: "hsl(152, 45%, 28%)" },
+  { name: "Moderado", mensal: 18000, anual: 216000, cor: "hsl(198, 60%, 42%)" },
 ];
 
 const tableData = [
-  { label: "Receita Bruta Anual (locação)", conservador: "R$ 120.000", moderado: "R$ 144.000" },
-  { label: "Receita locação em 3 anos", conservador: "R$ 360.000", moderado: "R$ 432.000" },
+  { label: "Receita Bruta Anual (locação)", conservador: "R$ 168.000", moderado: "R$ 216.000" },
+  { label: "Receita locação em 3 anos", conservador: "R$ 504.000", moderado: "R$ 648.000" },
   { label: "Valorização do imóvel (50% a 80%)", conservador: "R$ 325.000 (50%)", moderado: "R$ 520.000 (80%)" },
   { label: "Valor de venda após 3 anos", conservador: "R$ 975.000", moderado: "R$ 1.170.000" },
-  { label: "Lucro total (renda + venda)", conservador: "R$ 685.000", moderado: "R$ 952.000" },
-  { label: "ROI total em 3 anos", conservador: "105%", moderado: "146%" },
+  { label: "Lucro total (renda + venda)", conservador: "R$ 829.000", moderado: "R$ 1.168.000" },
+  { label: "ROI total em 3 anos", conservador: "128%", moderado: "180%" },
 ];
 
 const formatCurrency = (value: number) =>
@@ -31,7 +31,7 @@ const RevenueSection = () => {
             Modelo de <span className="text-gradient-nature">Receita</span>
           </h2>
           <p className="text-muted-foreground font-body max-w-2xl mx-auto text-lg">
-            Projeção baseada em média de R$ 2.500 a R$ 3.000 por final de semana, com datas especiais elevando ainda mais o faturamento.
+            Valores de locação variam de <strong className="text-foreground">R$ 3.000 a R$ 15.000</strong> por final de semana, dependendo da temporada e feriados como Réveillon, Carnaval, Páscoa e Natal.
           </p>
         </motion.div>
 
@@ -51,11 +51,15 @@ const RevenueSection = () => {
               </span>
               <div className="space-y-4 font-body">
                 <div className="flex justify-between items-center">
-                  <span className="text-muted-foreground">Diária média (fim de semana)</span>
-                  <span className="font-semibold text-foreground">{i === 0 ? "R$ 2.500" : "R$ 3.000"}</span>
+                  <span className="text-muted-foreground">Faixa de diária (fim de semana)</span>
+                  <span className="font-semibold text-foreground">R$ 3.000 – R$ 15.000</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-muted-foreground">Receita mensal</span>
+                  <span className="text-muted-foreground">Média ponderada/fim de semana</span>
+                  <span className="font-semibold text-foreground">{i === 0 ? "R$ 3.500" : "R$ 4.500"}</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-muted-foreground">Receita mensal (4 fins de semana)</span>
                   <span className="font-semibold text-foreground">{formatCurrency(s.mensal)}</span>
                 </div>
                 <div className="h-px bg-border my-2" />
