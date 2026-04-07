@@ -25,6 +25,7 @@ const Index = () => {
       <AppreciationSection />
       <SimulatorSection />
       <ClosingSection />
+      <WhatsAppFloat />
     </div>
   );
 };
