@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from "recharts";
 
 const scenarioData = [
   { name: "Conservador", mensal: 10000, anual: 120000, cor: "hsl(152, 45%, 28%)" },
@@ -9,10 +8,10 @@ const scenarioData = [
 const tableData = [
   { label: "Receita Bruta Anual (locação)", conservador: "R$ 120.000", moderado: "R$ 144.000" },
   { label: "Receita locação em 3 anos", conservador: "R$ 360.000", moderado: "R$ 432.000" },
-  { label: "Valorização do imóvel (50% a 80%)", conservador: "R$ 250.000 (50%)", moderado: "R$ 400.000 (80%)" },
-  { label: "Valor de venda após 3 anos", conservador: "R$ 750.000", moderado: "R$ 900.000" },
-  { label: "Lucro total (renda + venda)", conservador: "R$ 610.000", moderado: "R$ 832.000" },
-  { label: "ROI total em 3 anos", conservador: "122%", moderado: "166%" },
+  { label: "Valorização do imóvel (50% a 80%)", conservador: "R$ 325.000 (50%)", moderado: "R$ 520.000 (80%)" },
+  { label: "Valor de venda após 3 anos", conservador: "R$ 975.000", moderado: "R$ 1.170.000" },
+  { label: "Lucro total (renda + venda)", conservador: "R$ 685.000", moderado: "R$ 952.000" },
+  { label: "ROI total em 3 anos", conservador: "105%", moderado: "146%" },
 ];
 
 const formatCurrency = (value: number) =>
@@ -44,13 +43,13 @@ const RevenueSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.15 }}
-              className="bg-card rounded-2xl p-8 shadow-card border border-border"
+              className="bg-card rounded-2xl p-8 shadow-card border border-border hover:shadow-premium transition-all duration-300"
             >
-              <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold font-body tracking-wider uppercase mb-4"
+              <span className="inline-block px-4 py-1.5 rounded-full text-xs font-semibold font-body tracking-wider uppercase mb-5"
                 style={{ backgroundColor: s.cor, color: "white" }}>
                 Cenário {s.name}
               </span>
-              <div className="space-y-3 font-body">
+              <div className="space-y-4 font-body">
                 <div className="flex justify-between items-center">
                   <span className="text-muted-foreground">Diária média (fim de semana)</span>
                   <span className="font-semibold text-foreground">{i === 0 ? "R$ 2.500" : "R$ 3.000"}</span>
@@ -87,7 +86,7 @@ const RevenueSection = () => {
               </thead>
               <tbody>
                 {tableData.map((row, i) => (
-                  <tr key={row.label} className={i % 2 === 0 ? "bg-card" : "bg-muted/50"}>
+                  <tr key={row.label} className={`${i % 2 === 0 ? "bg-card" : "bg-muted/50"} ${i === tableData.length - 1 ? "font-bold text-lg" : ""}`}>
                     <td className="px-6 py-4 text-foreground font-medium">{row.label}</td>
                     <td className="px-6 py-4 text-right text-foreground font-semibold">{row.conservador}</td>
                     <td className="px-6 py-4 text-right text-secondary font-semibold">{row.moderado}</td>
