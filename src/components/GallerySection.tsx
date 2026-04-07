@@ -10,15 +10,21 @@ import resortBar from "@/assets/resort-bar.jpg";
 import resortAerial from "@/assets/resort-aerial.jpg";
 import resortLake from "@/assets/resort-lake.jpg";
 import resortPlayroom from "@/assets/resort-playroom.jpg";
+import resortNight1 from "@/assets/resort-night-1.jpg";
+import resortNight2 from "@/assets/resort-night-2.jpg";
+import resortNight3 from "@/assets/resort-night-3.jpg";
 
 const photos = [
   { src: resortLake, label: "Lago natural e paisagismo" },
   { src: resortPool, label: "Piscina e área de lazer" },
   { src: resortKids, label: "Parque aquático infantil" },
+  { src: resortNight1, label: "Vista noturna — paisagismo iluminado" },
   { src: resortLounge, label: "Lounge com vista para piscina" },
   { src: resortBar, label: "Churrasqueira e bar gourmet" },
+  { src: resortNight2, label: "Fachada iluminada à noite" },
   { src: resortAerial, label: "Vista aérea do empreendimento" },
   { src: resortPlayroom, label: "Brinquedoteca" },
+  { src: resortNight3, label: "Jardins iluminados à noite" },
   { src: resortWater, label: "Piscina principal" },
 ];
 
