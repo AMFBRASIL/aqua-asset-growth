@@ -17,10 +17,15 @@ const SimulatorSection = () => {
   const valorVendaConservador = inv.value + valorizacaoConservador;
   const valorVendaModerado = inv.value + valorizacaoModerado;
 
+  // Receitas extras: 30 consumidores/fds × tickets (churrasco 45 + chopp 30 + mercado 35 + bar 50) × 4 semanas
+  const receitaExtraMensal = 30 * (45 + 30 + 35 + 50) * 4; // R$ 19.200/mês por unidade operacional
+  const receitaExtraMensalInvestidor = receitaExtraMensal * inv.units;
+  const receitaExtra3anos = receitaExtraMensalInvestidor * 36;
+
   const lucroRendaConservador = receitaMensalConservador * 36;
   const lucroRendaModerado = receitaMensalModerado * 36;
-  const lucroTotalConservador = lucroRendaConservador + valorizacaoConservador;
-  const lucroTotalModerado = lucroRendaModerado + valorizacaoModerado;
+  const lucroTotalConservador = lucroRendaConservador + valorizacaoConservador + receitaExtra3anos;
+  const lucroTotalModerado = lucroRendaModerado + valorizacaoModerado + receitaExtra3anos;
   const roiConservador = ((lucroTotalConservador / inv.value) * 100).toFixed(0);
   const roiModerado = ((lucroTotalModerado / inv.value) * 100).toFixed(0);
 
