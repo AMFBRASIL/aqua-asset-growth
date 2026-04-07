@@ -3,6 +3,7 @@ import InvestmentSection from "@/components/InvestmentSection";
 import TimelapseSection from "@/components/TimelapseSection";
 import GallerySection from "@/components/GallerySection";
 import RevenueSection from "@/components/RevenueSection";
+import ExtraRevenueSection from "@/components/ExtraRevenueSection";
 import CDIComparisonSection from "@/components/CDIComparisonSection";
 import SecuritySection from "@/components/SecuritySection";
 import AppreciationSection from "@/components/AppreciationSection";
