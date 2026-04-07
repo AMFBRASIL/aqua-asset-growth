@@ -48,6 +48,18 @@ const ExtraRevenueSection = () => {
         { icon: DollarSign, label: "Receita mensal", value: fmt(receitaMercadoFds * 4) },
       ],
     },
+    {
+      title: "Bar Americano",
+      subtitle: "Chopp self-service, sinuca, mesa de air hockey e telões",
+      image: barAmericanoImg,
+      icon: Tv,
+      description:
+        "Bar estilo americano com máquinas de chopp em auto atendimento, mesa de sinuca, air hockey e telões transmitindo esportes ao vivo. Um espaço de convivência que atrai consumo e fideliza hóspedes.",
+      highlights: [
+        { icon: Beer, label: "Chopp self-service", value: fmt(receitaBarFds) + "/fds" },
+        { icon: DollarSign, label: "Receita mensal", value: fmt(receitaBarFds * 4) },
+      ],
+    },
   ];
 
   return (
