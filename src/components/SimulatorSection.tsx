@@ -74,7 +74,10 @@ const SimulatorSection = () => {
             <h3 className="font-display font-bold text-xl text-foreground mb-2 flex items-center gap-2">
               🏨 <span>Lucro com Renda de Locação</span>
             </h3>
-            <p className="text-muted-foreground font-body text-sm mb-6">Receita acumulada alugando o imóvel por temporada durante 3 anos.</p>
+            <div className="bg-accent/10 border border-accent/30 rounded-xl p-4 mb-6">
+              <p className="text-foreground font-body text-sm font-medium mb-1">💡 Valores de locação por final de semana: <strong>R$ 3.000 a R$ 15.000</strong></p>
+              <p className="text-muted-foreground font-body text-xs">Feriados como Réveillon, Carnaval, Páscoa e Natal elevam significativamente a diária. A média ponderada considera finais de semana regulares e de alta temporada.</p>
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <SimCard label="Conservador" variant="primary">
