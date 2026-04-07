@@ -139,6 +139,7 @@ const SimulatorSection = () => {
                 <span className="text-xs font-semibold font-body tracking-wider uppercase text-primary mb-4 block">Conservador</span>
                 <div className="space-y-3 font-body text-sm">
                   <SimRow label="Renda locação (3 anos)" value={fmt(lucroRendaConservador)} />
+                  <SimRow label="Receitas extras (3 anos)" value={fmt(receitaExtra3anos)} highlight="primary" />
                   <SimRow label="Lucro na venda (valorização)" value={fmt(valorizacaoConservador)} />
                   <SimDivider />
                   <SimTotal label="Lucro total" value={fmt(lucroTotalConservador)} variant="primary" />
