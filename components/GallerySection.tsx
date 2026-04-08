@@ -10,7 +10,7 @@ const photos = [
   { src: "/assets/resort-lounge.jpg", label: "Lounge com vista para piscina" },
   { src: "/assets/resort-bar.jpg", label: "Churrasqueira e bar gourmet" },
   { src: "/assets/resort-night-2.jpg", label: "Fachada iluminada à noite" },
-  { src: "/assets/resort-aerial.jpg", label: "Vista aérea do empreendimento" },
+  { src: "/assets/resort-aerial.png", label: "Vista aérea do empreendimento" },
   { src: "/assets/resort-playroom.jpg", label: "Brinquedoteca" },
   { src: "/assets/resort-night-3.jpg", label: "Jardins iluminados à noite" },
   { src: "/assets/resort-water.jpg", label: "Piscina principal" },

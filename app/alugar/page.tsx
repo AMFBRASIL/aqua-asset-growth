@@ -27,7 +27,7 @@ const apartments = [
     price: "R$ 1.000",
     pricePeriod: "/diária",
     capacity: "10 hóspedes",
-    images: ["/assets/resort-night-1.jpg", "/assets/resort-night-3.jpg", "/assets/resort-aerial.jpg"],
+    images: ["/assets/resort-night-1.jpg", "/assets/resort-night-3.jpg", "/assets/resort-aerial.png"],
     highlights: ["Jardim privativo", "160m²", "3 suítes"],
   },
   {
@@ -51,7 +51,7 @@ const apartments = [
     price: "R$ 1.000",
     pricePeriod: "/diária",
     capacity: "10 hóspedes",
-    images: ["/assets/resort-aerial.jpg", "/assets/resort-pool.jpg", "/assets/resort-playroom.jpg"],
+    images: ["/assets/resort-aerial.png", "/assets/resort-pool.jpg", "/assets/resort-playroom.jpg"],
     highlights: ["Área central", "160m²", "3 suítes"],
   },
   {
