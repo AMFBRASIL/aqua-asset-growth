@@ -45,8 +45,10 @@ npm run dev
 
 1. No [dashboard da Vercel](https://vercel.com/dashboard), abra o projeto ligado a este repositório.
 2. **Settings** → **General** → **Root Directory** → defina **`api`** e salve.
-3. **Settings** → **Environment Variables** → copie as variáveis de `api/.env.example` (Mailgun, etc.).
-4. Faça um novo **Deploy** (Deployments → ⋮ → Redeploy), ou um `git push` em `main`.
+3. **Settings** → **Environment Variables** → copie as variáveis de `api/.env.example` (Mailgun, `FRONTEND_ORIGIN`, etc.).
+4. Opcional: **`SITE_URL`** = URL do deploy do **site** (`web/`). Assim, quem abrir a raiz da API no navegador é redirecionado ao site.
+5. Para o **site** em si: crie **outro** projeto na Vercel com Root Directory **`web`** e use essa URL como site público.
+6. Faça um novo **Deploy** (Deployments → ⋮ → Redeploy), ou um `git push` em `main`.
 
 Sem **Root Directory = `api`**, o build usa a raiz do repo (Vite) e a Vercel não detecta o Next.js.
 
