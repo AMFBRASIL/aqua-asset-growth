@@ -12,9 +12,10 @@ dist
 dist-ssr
 *.local
 
-# Backend Next.js / segredos
-backend/.env
-backend/.env.local
+# Next.js API / segredos
+api/.env
+api/.env.local
+**/.next
 
 # Editor directories and files
 .vscode/*
