@@ -8,7 +8,7 @@ import Link from "next/link";
 const apartments = [
   {
     name: "Apartamento Lago",
-    price: "R$ 1.200",
+    price: "R$ 2.320",
     pricePeriod: "/diária",
     capacity: "10 hóspedes",
     images: ["/assets/resort-lake.jpg", "/assets/resort-lounge.jpg", "/assets/resort-pool.jpg"],
@@ -16,7 +16,7 @@ const apartments = [
   },
   {
     name: "Apartamento Piscina",
-    price: "R$ 1.100",
+    price: "R$ 2.240",
     pricePeriod: "/diária",
     capacity: "10 hóspedes",
     images: ["/assets/resort-pool.jpg", "/assets/resort-water.jpg", "/assets/resort-kids.jpg"],
@@ -24,7 +24,7 @@ const apartments = [
   },
   {
     name: "Apartamento Jardim",
-    price: "R$ 1.000",
+    price: "R$ 2.200",
     pricePeriod: "/diária",
     capacity: "10 hóspedes",
     images: ["/assets/resort-night-1.jpg", "/assets/resort-night-3.jpg", "/assets/resort-aerial.png"],
@@ -32,7 +32,7 @@ const apartments = [
   },
   {
     name: "Apartamento Varanda",
-    price: "R$ 1.100",
+    price: "R$ 2.260",
     pricePeriod: "/diária",
     capacity: "10 hóspedes",
     images: ["/assets/resort-lounge.jpg", "/assets/resort-bar.jpg", "/assets/resort-lake.jpg"],
@@ -40,7 +40,7 @@ const apartments = [
   },
   {
     name: "Apartamento Sunset",
-    price: "R$ 1.200",
+    price: "R$ 2.280",
     pricePeriod: "/diária",
     capacity: "10 hóspedes",
     images: ["/assets/resort-night-2.jpg", "/assets/resort-night-1.jpg", "/assets/resort-lounge.jpg"],
@@ -48,7 +48,7 @@ const apartments = [
   },
   {
     name: "Apartamento Resort",
-    price: "R$ 1.000",
+    price: "R$ 2.220",
     pricePeriod: "/diária",
     capacity: "10 hóspedes",
     images: ["/assets/resort-aerial.png", "/assets/resort-pool.jpg", "/assets/resort-playroom.jpg"],
@@ -56,7 +56,7 @@ const apartments = [
   },
   {
     name: "Apartamento Premium",
-    price: "R$ 1.400",
+    price: "R$ 2.350",
     pricePeriod: "/diária",
     capacity: "10 hóspedes",
     images: ["/assets/resort-bar.jpg", "/assets/resort-lake.jpg", "/assets/resort-night-2.jpg"],
