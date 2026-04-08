@@ -1,86 +1,33 @@
-# Welcome to your Lovable project
+# Aqua Asset Growth — Ibiunature Aqua Clube
 
-## Project info
+Site e API de contato em **um único projeto [Next.js](https://nextjs.org/)** (App Router). Páginas em `app/`, formulário em `/contato` chama `POST /api/contact` (Mailgun) na mesma origem — ideal para a Vercel.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
-
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+## Desenvolvimento
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install dependencies (site em web/ e API Next em api/).
-npm install --prefix web
-npm install --prefix api
-
-# Step 4: Desenvolvimento — use dois terminais:
-# Terminal A — API Next (porta 3000), necessária para o formulário de contato
-npm run dev:api
-
-# Terminal B — site Vite (porta 8080)
+npm install
+cp .env.example .env   # preencha Mailgun
 npm run dev
 ```
 
-### Deploy da API (Next.js) na Vercel
+Abra [http://localhost:3000](http://localhost:3000).
 
-1. No [dashboard da Vercel](https://vercel.com/dashboard), abra o projeto ligado a este repositório.
-2. **Settings** → **General** → **Root Directory** → defina **`api`** e salve.
-3. **Settings** → **Environment Variables** → copie as variáveis de `api/.env.example` (Mailgun, `FRONTEND_ORIGIN`, etc.).
-4. Opcional: **`SITE_URL`** = URL do deploy do **site** (`web/`). Assim, quem abrir a raiz da API no navegador é redirecionado ao site.
-5. Para o **site** em si: crie **outro** projeto na Vercel com Root Directory **`web`** e use essa URL como site público.
-6. Faça um novo **Deploy** (Deployments → ⋮ → Redeploy), ou um `git push` em `main`.
+## Deploy na Vercel
 
-Sem **Root Directory = `api`**, o build usa a raiz do repo (Vite) e a Vercel não detecta o Next.js.
+1. Importe o repositório e deixe **Root Directory** na **raiz** (`.`).
+2. Framework: Next.js (detectado automaticamente).
+3. Em **Environment Variables**, copie as chaves de `.env.example` (produção: `FRONTEND_ORIGIN` = URL pública do site, ex. `https://seu-projeto.vercel.app`).
 
-**Edit a file directly in GitHub**
+Não é necessário segundo projeto nem pasta separada para “API”.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Estrutura
 
-**Use GitHub Codespaces**
+- `app/page.tsx` — home  
+- `app/contato`, `app/alugar` — páginas  
+- `app/api/contact` — envio de e-mail (Mailgun)  
+- `components/` — UI e seções  
+- `public/assets/` — imagens  
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Stack
 
-## What technologies are used for this project?
-
-This project is built with:
-
-- **web/** — Vite, TypeScript, React, shadcn-ui, Tailwind CSS
-- **api/** — Next.js (App Router), rota `POST /api/contact` e Mailgun
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Next.js 15, React 19, Tailwind, shadcn/ui, Framer Motion, TanStack Query, Mailgun.
