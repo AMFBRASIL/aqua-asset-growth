@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, MapPin } from "lucide-react";
 
 const resortLake = "/assets/resort-lake.jpg";
 
@@ -66,7 +66,8 @@ const HeroSection = () => {
               href="/localizacao"
               className="inline-flex items-center justify-center gap-2 px-10 py-4 bg-primary-foreground/10 backdrop-blur-sm text-primary-foreground font-body font-semibold rounded-xl text-lg border border-primary-foreground/25 hover:bg-primary-foreground/20 transition-all duration-300"
             >
-              Como chegar
+              <MapPin className="w-5 h-5" />
+              Localização
             </a>
           </motion.div>
 
