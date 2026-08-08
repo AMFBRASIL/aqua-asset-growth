@@ -8,7 +8,7 @@ import Link from "next/link";
 const apartments = [
   {
     name: "Apartamento Lago",
-    price: "R$ 2.320",
+    price: "A partir de R$ 1.000",
     pricePeriod: "/diária",
     capacity: "10 hóspedes",
     images: ["/assets/resort-lake.jpg", "/assets/resort-lounge.jpg", "/assets/resort-pool.jpg"],
@@ -16,7 +16,7 @@ const apartments = [
   },
   {
     name: "Apartamento Piscina",
-    price: "R$ 2.240",
+    price: "A partir de R$ 1.000",
     pricePeriod: "/diária",
     capacity: "10 hóspedes",
     images: ["/assets/resort-pool.jpg", "/assets/resort-water.jpg", "/assets/resort-kids.jpg"],
@@ -24,7 +24,7 @@ const apartments = [
   },
   {
     name: "Apartamento Jardim",
-    price: "R$ 2.200",
+    price: "A partir de R$ 1.000",
     pricePeriod: "/diária",
     capacity: "10 hóspedes",
     images: ["/assets/resort-night-1.jpg", "/assets/resort-night-3.jpg", "/assets/resort-aerial.png"],
@@ -32,7 +32,7 @@ const apartments = [
   },
   {
     name: "Apartamento Varanda",
-    price: "R$ 2.260",
+    price: "A partir de R$ 1.000",
     pricePeriod: "/diária",
     capacity: "10 hóspedes",
     images: ["/assets/resort-lounge.jpg", "/assets/resort-bar.jpg", "/assets/resort-lake.jpg"],
@@ -40,7 +40,7 @@ const apartments = [
   },
   {
     name: "Apartamento Sunset",
-    price: "R$ 2.280",
+    price: "A partir de R$ 1.000",
     pricePeriod: "/diária",
     capacity: "10 hóspedes",
     images: ["/assets/resort-night-2.jpg", "/assets/resort-night-1.jpg", "/assets/resort-lounge.jpg"],
@@ -48,7 +48,7 @@ const apartments = [
   },
   {
     name: "Apartamento Resort",
-    price: "R$ 2.220",
+    price: "A partir de R$ 1.000",
     pricePeriod: "/diária",
     capacity: "10 hóspedes",
     images: ["/assets/resort-aerial.png", "/assets/resort-pool.jpg", "/assets/resort-playroom.jpg"],
@@ -56,7 +56,7 @@ const apartments = [
   },
   {
     name: "Apartamento Premium",
-    price: "R$ 2.350",
+    price: "A partir de R$ 1.000",
     pricePeriod: "/diária",
     capacity: "10 hóspedes",
     images: ["/assets/resort-bar.jpg", "/assets/resort-lake.jpg", "/assets/resort-night-2.jpg"],
@@ -113,9 +113,9 @@ function ApartmentCard({ apt }: { apt: (typeof apartments)[0] }) {
             />
           ))}
         </div>
-        <div className="absolute top-3 right-3 bg-accent text-accent-foreground px-3 py-1.5 rounded-lg font-bold text-sm shadow-lg">
+        <div className="absolute top-3 right-3 bg-accent text-accent-foreground px-3 py-1.5 rounded-lg font-bold text-sm shadow-lg max-w-[70%] text-right leading-tight">
           {apt.price}
-          <span className="font-normal text-xs">{apt.pricePeriod}</span>
+          <span className="font-normal text-xs block">{apt.pricePeriod}</span>
         </div>
       </div>
       <div className="p-5 flex flex-col flex-1">
@@ -158,8 +158,8 @@ export default function AlugarPage() {
       </div>
       <div className="container mx-auto px-6 py-12">
         <p className="text-muted-foreground font-body text-center max-w-2xl mx-auto mb-10 text-lg">
-          Escolha seu apartamento e viva a experiência de um resort completo com piscinas, churrasqueira, bar e muito
-          mais.
+          Diárias a partir de R$ 1.000. Escolha seu apartamento e viva a experiência de um resort completo com piscinas,
+          churrasqueira, bar e muito mais. Valor final conforme datas e disponibilidade.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {apartments.map((apt) => (
