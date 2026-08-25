@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ChevronDown, MapPin } from "lucide-react";
+import Link from "next/link";
 
 const resortLake = "/assets/resort-lake.jpg";
 
@@ -56,19 +57,19 @@ const HeroSection = () => {
             >
               Quero Receber o Estudo Financeiro
             </a>
-            <a
+            <Link
               href="/conhecer"
               className="inline-flex items-center justify-center gap-2 px-10 py-4 bg-primary-foreground/10 backdrop-blur-sm text-primary-foreground font-body font-semibold rounded-xl text-lg border border-primary-foreground/25 hover:bg-primary-foreground/20 transition-all duration-300"
             >
               Quero Alugar por Temporada
-            </a>
-            <a
+            </Link>
+            <Link
               href="/localizacao"
               className="inline-flex items-center justify-center gap-2 px-10 py-4 bg-primary-foreground/10 backdrop-blur-sm text-primary-foreground font-body font-semibold rounded-xl text-lg border border-primary-foreground/25 hover:bg-primary-foreground/20 transition-all duration-300"
             >
               <MapPin className="w-5 h-5" />
               Localização
-            </a>
+            </Link>
           </motion.div>
 
           {/* Stats bar */}
