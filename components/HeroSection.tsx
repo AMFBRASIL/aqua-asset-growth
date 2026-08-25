@@ -64,6 +64,12 @@ const HeroSection = () => {
               Quero Alugar por Temporada
             </Link>
             <Link
+              href="/airbnb"
+              className="inline-flex items-center justify-center gap-2 px-10 py-4 bg-[#FF5A5F]/90 hover:bg-[#FF5A5F] text-white font-body font-semibold rounded-xl text-lg transition-all duration-300"
+            >
+              Reservar no Airbnb
+            </Link>
+            <Link
               href="/localizacao"
               className="inline-flex items-center justify-center gap-2 px-10 py-4 bg-primary-foreground/10 backdrop-blur-sm text-primary-foreground font-body font-semibold rounded-xl text-lg border border-primary-foreground/25 hover:bg-primary-foreground/20 transition-all duration-300"
             >

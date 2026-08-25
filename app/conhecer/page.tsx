@@ -311,6 +311,12 @@ export default function ConhecerPage() {
                 <ArrowRight className="w-5 h-5" />
               </Link>
               <Link
+                href="/airbnb"
+                className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-[#FF5A5F] text-white font-body font-bold rounded-xl text-lg hover:brightness-110 transition-all"
+              >
+                Reservar no Airbnb
+              </Link>
+              <Link
                 href="/localizacao"
                 className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-primary-foreground/10 border border-primary-foreground/25 text-primary-foreground font-body font-semibold rounded-xl text-lg hover:bg-primary-foreground/20 transition-all"
               >
