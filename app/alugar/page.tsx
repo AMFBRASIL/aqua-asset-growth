@@ -8,56 +8,56 @@ import Link from "next/link";
 const apartments = [
   {
     name: "Apartamento Lago",
-    price: "A partir de R$ 1.000",
-    pricePeriod: "/diária",
+    price: "A consultar",
+    pricePeriod: "",
     capacity: "10 hóspedes",
     images: ["/assets/resort-lake.jpg", "/assets/resort-lounge.jpg", "/assets/resort-pool.jpg"],
     highlights: ["Vista para o lago", "160m²", "3 suítes"],
   },
   {
     name: "Apartamento Piscina",
-    price: "A partir de R$ 1.000",
-    pricePeriod: "/diária",
+    price: "A consultar",
+    pricePeriod: "",
     capacity: "10 hóspedes",
     images: ["/assets/resort-pool.jpg", "/assets/resort-water.jpg", "/assets/resort-kids.jpg"],
     highlights: ["Acesso direto à piscina", "160m²", "3 suítes"],
   },
   {
     name: "Apartamento Jardim",
-    price: "A partir de R$ 1.000",
-    pricePeriod: "/diária",
+    price: "A consultar",
+    pricePeriod: "",
     capacity: "10 hóspedes",
     images: ["/assets/resort-night-1.jpg", "/assets/resort-night-3.jpg", "/assets/resort-aerial.png"],
     highlights: ["Jardim privativo", "160m²", "3 suítes"],
   },
   {
     name: "Apartamento Varanda",
-    price: "A partir de R$ 1.000",
-    pricePeriod: "/diária",
+    price: "A consultar",
+    pricePeriod: "",
     capacity: "10 hóspedes",
     images: ["/assets/resort-lounge.jpg", "/assets/resort-bar.jpg", "/assets/resort-lake.jpg"],
     highlights: ["Varanda gourmet", "160m²", "3 suítes"],
   },
   {
     name: "Apartamento Sunset",
-    price: "A partir de R$ 1.000",
-    pricePeriod: "/diária",
+    price: "A consultar",
+    pricePeriod: "",
     capacity: "10 hóspedes",
     images: ["/assets/resort-night-2.jpg", "/assets/resort-night-1.jpg", "/assets/resort-lounge.jpg"],
     highlights: ["Vista pôr do sol", "160m²", "3 suítes"],
   },
   {
     name: "Apartamento Resort",
-    price: "A partir de R$ 1.000",
-    pricePeriod: "/diária",
+    price: "A consultar",
+    pricePeriod: "",
     capacity: "10 hóspedes",
     images: ["/assets/resort-aerial.png", "/assets/resort-pool.jpg", "/assets/resort-playroom.jpg"],
     highlights: ["Área central", "160m²", "3 suítes"],
   },
   {
     name: "Apartamento Premium",
-    price: "A partir de R$ 1.000",
-    pricePeriod: "/diária",
+    price: "A consultar",
+    pricePeriod: "",
     capacity: "10 hóspedes",
     images: ["/assets/resort-bar.jpg", "/assets/resort-lake.jpg", "/assets/resort-night-2.jpg"],
     highlights: ["Cobertura exclusiva", "160m²", "3 suítes"],
@@ -71,7 +71,7 @@ function ApartmentCard({ apt }: { apt: (typeof apartments)[0] }) {
   const prev = () => setCurrent((c) => (c - 1 + apt.images.length) % apt.images.length);
   const next = () => setCurrent((c) => (c + 1) % apt.images.length);
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-    `Olá! Tenho interesse no ${apt.name} (${apt.price}${apt.pricePeriod}). Gostaria de mais informações sobre disponibilidade.`
+    `Olá! Tenho interesse no ${apt.name}. Gostaria de consultar preços e disponibilidade.`
   )}`;
 
   return (
@@ -113,9 +113,8 @@ function ApartmentCard({ apt }: { apt: (typeof apartments)[0] }) {
             />
           ))}
         </div>
-        <div className="absolute top-3 right-3 bg-accent text-accent-foreground px-3 py-1.5 rounded-lg font-bold text-sm shadow-lg max-w-[70%] text-right leading-tight">
+        <div className="absolute top-3 right-3 bg-accent text-accent-foreground px-3 py-1.5 rounded-lg font-bold text-sm shadow-lg">
           {apt.price}
-          <span className="font-normal text-xs block">{apt.pricePeriod}</span>
         </div>
       </div>
       <div className="p-5 flex flex-col flex-1">
@@ -147,7 +146,7 @@ export default function AlugarPage() {
     <div className="min-h-screen bg-background">
       <div className="bg-foreground/95 text-primary-foreground py-6">
         <div className="container mx-auto px-6 flex items-center gap-4">
-          <Link href="/" className="hover:opacity-80 transition-opacity">
+          <Link href="/conhecer" className="hover:opacity-80 transition-opacity" aria-label="Voltar para Conhecer">
             <ArrowLeft className="w-6 h-6" />
           </Link>
           <div>
@@ -158,8 +157,8 @@ export default function AlugarPage() {
       </div>
       <div className="container mx-auto px-6 py-12">
         <p className="text-muted-foreground font-body text-center max-w-2xl mx-auto mb-10 text-lg">
-          Diárias a partir de R$ 1.000. Escolha seu apartamento e viva a experiência de um resort completo com piscinas,
-          churrasqueira, bar e muito mais. Valor final conforme datas e disponibilidade.
+          Escolha seu apartamento e viva a experiência de um resort completo. Valores sob consulta — fale conosco pelo
+          WhatsApp para datas e disponibilidade.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {apartments.map((apt) => (
