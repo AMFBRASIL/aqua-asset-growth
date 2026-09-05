@@ -29,14 +29,17 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { QRCodeSVG } from "qrcode.react";
+import {
+  CONTACT_EMAIL,
+  INSTAGRAM_HANDLE,
+  SITE_URL,
+  WHATSAPP_DISPLAY,
+  whatsappUrl,
+} from "@/lib/site";
 
 const MAPS_URL =
   "https://www.google.com/maps/dir/?api=1&destination=R.+Eliseu+Jos%C3%A9+Pereira,+248+-+Paruru,+Ibi%C3%BAna+-+SP,+18150-000";
 const ADDRESS = "R. Eliseu José Pereira, 248 — Paruru, Ibiúna – SP, 18150-000";
-const PHONE_DISPLAY = "(11) 98440-1158";
-const PHONE_WA = "5511984401158";
-const EMAIL = "promautone@gmail.com";
-const INSTAGRAM = "ibiunatureoficial";
 
 const amenities = [
   { icon: Waves, label: "Parque aquático" },
@@ -94,10 +97,10 @@ function CopyButton({ value, label }: { value: string; label: string }) {
 }
 
 export default function LocalizacaoPage() {
-  const [pageUrl, setPageUrl] = useState("https://ibiunature.com.br/localizacao");
-  const whatsappLink = `https://wa.me/${PHONE_WA}?text=${encodeURIComponent(
-    "Olá Anderson! Vi a página de localização do Ibiunature Aqua Clube e gostaria de mais informações."
-  )}`;
+  const [pageUrl, setPageUrl] = useState(`${SITE_URL}/localizacao`);
+  const whatsappLink = whatsappUrl(
+    "Olá! Vi a página de localização do Ibiunature Aqua Clube e gostaria de mais informações."
+  );
 
   useEffect(() => {
     setPageUrl(`${window.location.origin}/localizacao`);
@@ -291,7 +294,7 @@ export default function LocalizacaoPage() {
           >
             <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-2">Fale conosco</h2>
             <p className="text-muted-foreground font-body text-sm mb-8">
-              Anderson — atendimento direto para visitas e informações.
+              Atendimento direto para visitas e informações.
             </p>
 
             <div className="space-y-5 flex-1">
@@ -307,13 +310,13 @@ export default function LocalizacaoPage() {
                 <div>
                   <p className="font-body text-xs text-muted-foreground">Telefone / WhatsApp</p>
                   <p className="font-body font-semibold text-foreground group-hover:text-primary transition-colors">
-                    {PHONE_DISPLAY} — Anderson
+                    {WHATSAPP_DISPLAY}
                   </p>
                 </div>
               </a>
 
               <a
-                href={`mailto:${EMAIL}`}
+                href={`mailto:${CONTACT_EMAIL}`}
                 className="flex items-center gap-4 group"
               >
                 <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
@@ -322,13 +325,13 @@ export default function LocalizacaoPage() {
                 <div>
                   <p className="font-body text-xs text-muted-foreground">E-mail</p>
                   <p className="font-body font-semibold text-foreground group-hover:text-primary transition-colors">
-                    {EMAIL}
+                    {CONTACT_EMAIL}
                   </p>
                 </div>
               </a>
 
               <a
-                href={`https://instagram.com/${INSTAGRAM}`}
+                href={`https://instagram.com/${INSTAGRAM_HANDLE}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 group"
@@ -339,7 +342,7 @@ export default function LocalizacaoPage() {
                 <div>
                   <p className="font-body text-xs text-muted-foreground">Instagram</p>
                   <p className="font-body font-semibold text-foreground group-hover:text-primary transition-colors">
-                    @{INSTAGRAM}
+                    @{INSTAGRAM_HANDLE}
                   </p>
                 </div>
               </a>
@@ -362,7 +365,7 @@ export default function LocalizacaoPage() {
               className="mt-8 inline-flex items-center justify-center gap-2 w-full px-6 py-4 bg-[#25D366] hover:bg-[#1fb855] text-white font-body font-bold rounded-xl transition-all"
             >
               <Phone className="w-5 h-5" />
-              Chamar Anderson no WhatsApp
+              Chamar no WhatsApp
             </a>
           </motion.div>
         </div>

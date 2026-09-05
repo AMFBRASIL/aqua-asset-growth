@@ -2,6 +2,15 @@ export const SITE_URL = "https://aqua.ibiunature.com.br";
 export const SITE_NAME = "Ibiunature Aqua Clube";
 export const SITE_LOCALE = "pt_BR";
 
+export const WHATSAPP_E164 = "5511920069049";
+export const WHATSAPP_DISPLAY = "(11) 92006-9049";
+export const CONTACT_EMAIL = "promautone@gmail.com";
+export const INSTAGRAM_HANDLE = "ibiunatureoficial";
+
+export function whatsappUrl(message: string) {
+  return `https://wa.me/${WHATSAPP_E164}?text=${encodeURIComponent(message)}`;
+}
+
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/assets/localizacao-piscina.png`;
 
 export const airbnbListings = [

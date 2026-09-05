@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, MessageCircle, ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import { whatsappUrl } from "@/lib/site";
 
 const apartments = [
   {
@@ -64,15 +65,13 @@ const apartments = [
   },
 ];
 
-const whatsappNumber = "5511920069049";
-
 function ApartmentCard({ apt }: { apt: (typeof apartments)[0] }) {
   const [current, setCurrent] = useState(0);
   const prev = () => setCurrent((c) => (c - 1 + apt.images.length) % apt.images.length);
   const next = () => setCurrent((c) => (c + 1) % apt.images.length);
-  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+  const whatsappUrlForApt = whatsappUrl(
     `Olá! Tenho interesse no ${apt.name}. Gostaria de consultar preços e disponibilidade.`
-  )}`;
+  );
 
   return (
     <motion.div
@@ -128,7 +127,7 @@ function ApartmentCard({ apt }: { apt: (typeof apartments)[0] }) {
           ))}
         </div>
         <a
-          href={whatsappUrl}
+          href={whatsappUrlForApt}
           target="_blank"
           rel="noopener noreferrer"
           className="mt-auto inline-flex items-center justify-center gap-2 w-full px-4 py-3 bg-[#25D366] hover:bg-[#1fb855] text-white font-bold rounded-xl transition-all duration-300 hover:scale-[1.02]"

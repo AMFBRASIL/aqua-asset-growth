@@ -8,8 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-
-const whatsappNumber = "5511920069049";
+import { WHATSAPP_DISPLAY, whatsappUrl } from "@/lib/site";
 
 export default function ContatoPage() {
   const { toast } = useToast();
@@ -57,9 +56,9 @@ export default function ContatoPage() {
     }
   };
 
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+  const whatsappLink = whatsappUrl(
     "Olá! Tenho interesse em investir no Ibiunature Aqua Clube. Gostaria de falar com um consultor."
-  )}`;
+  );
 
   return (
     <div className="min-h-screen bg-background">
@@ -113,7 +112,7 @@ export default function ContatoPage() {
                 </div>
                 <div>
                   <p className="font-body font-semibold text-foreground text-sm">Telefone / WhatsApp</p>
-                  <p className="text-muted-foreground font-body text-sm">(11) 92006-9049</p>
+                  <p className="text-muted-foreground font-body text-sm">{WHATSAPP_DISPLAY}</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">

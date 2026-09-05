@@ -1,9 +1,7 @@
 import { MessageCircle } from "lucide-react";
+import { whatsappUrl } from "@/lib/site";
 
-const whatsappNumber = "5511920069049";
-const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-  "Olá! Gostaria de saber mais sobre o Ibiunature Aqua Clube."
-)}`;
+const whatsappLink = whatsappUrl("Olá! Gostaria de saber mais sobre o Ibiunature Aqua Clube.");
 
 const WhatsAppFloat = () => (
   <a
