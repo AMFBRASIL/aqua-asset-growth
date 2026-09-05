@@ -7,8 +7,12 @@ export const WHATSAPP_DISPLAY = "(11) 92006-9049";
 export const CONTACT_EMAIL = "promautone@gmail.com";
 export const INSTAGRAM_HANDLE = "ibiunatureoficial";
 
+export const WHATSAPP_MESSAGE_PREFIX =
+  "Olá Dalbert cristiano , estou com duvida... Preciso de ajuda... ";
+
 export function whatsappUrl(message: string) {
-  return `https://wa.me/${WHATSAPP_E164}?text=${encodeURIComponent(message)}`;
+  const text = `${WHATSAPP_MESSAGE_PREFIX}${message.trim()}`;
+  return `https://wa.me/${WHATSAPP_E164}?text=${encodeURIComponent(text)}`;
 }
 
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/assets/localizacao-piscina.png`;
