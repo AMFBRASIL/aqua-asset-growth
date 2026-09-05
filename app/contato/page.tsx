@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { WHATSAPP_DISPLAY, whatsappUrl } from "@/lib/site";
+import { WHATSAPP_DISPLAY, WHATSAPP_MESSAGES, whatsappUrl } from "@/lib/site";
 
 export default function ContatoPage() {
   const { toast } = useToast();
@@ -56,9 +56,7 @@ export default function ContatoPage() {
     }
   };
 
-  const whatsappLink = whatsappUrl(
-    "Olá! Tenho interesse em investir no Ibiunature Aqua Clube. Gostaria de falar com um consultor."
-  );
+  const whatsappLink = whatsappUrl(WHATSAPP_MESSAGES.contato);
 
   return (
     <div className="min-h-screen bg-background">

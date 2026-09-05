@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, MessageCircle, ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import { whatsappUrl } from "@/lib/site";
+import { whatsappAlugarUnit } from "@/lib/site";
 
 const apartments = [
   {
@@ -69,9 +69,7 @@ function ApartmentCard({ apt }: { apt: (typeof apartments)[0] }) {
   const [current, setCurrent] = useState(0);
   const prev = () => setCurrent((c) => (c - 1 + apt.images.length) % apt.images.length);
   const next = () => setCurrent((c) => (c + 1) % apt.images.length);
-  const whatsappUrlForApt = whatsappUrl(
-    `Olá! Tenho interesse no ${apt.name}. Gostaria de consultar preços e disponibilidade.`
-  );
+  const whatsappUrlForApt = whatsappAlugarUnit(apt.name);
 
   return (
     <motion.div

@@ -12,8 +12,16 @@ import {
   Waves,
   Users,
   Home,
+  MessageCircle,
 } from "lucide-react";
-import { airbnbListingUrl, airbnbListings } from "@/lib/site";
+import {
+  airbnbListingUrl,
+  airbnbListings,
+  WHATSAPP_MESSAGES,
+  whatsappAirbnbUnit,
+  whatsappUrl,
+} from "@/lib/site";
+import WhatsAppFloat from "@/components/WhatsAppFloat";
 
 const guarantees = [
   {
@@ -89,6 +97,15 @@ export default function AirbnbClient() {
               >
                 Conhecer o clube
               </Link>
+              <a
+                href={whatsappUrl(WHATSAPP_MESSAGES.airbnbGeral)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#25D366] text-white font-body font-bold rounded-xl hover:brightness-110 transition-all"
+              >
+                <MessageCircle className="w-5 h-5" />
+                WhatsApp
+              </a>
             </div>
           </motion.div>
         </div>
@@ -215,6 +232,15 @@ export default function AirbnbClient() {
                       Ver no Airbnb
                       <ExternalLink className="w-4 h-4" aria-hidden />
                     </a>
+                    <a
+                      href={whatsappAirbnbUnit(apt.name, apt.code)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-2 inline-flex items-center justify-center gap-2 w-full px-4 py-3 bg-[#25D366] hover:bg-[#1fb855] text-white font-body font-semibold rounded-xl transition-all"
+                    >
+                      <MessageCircle className="w-4 h-4" aria-hidden />
+                      Dúvidas no WhatsApp
+                    </a>
                   </div>
                 </motion.article>
               );
@@ -252,10 +278,21 @@ export default function AirbnbClient() {
               >
                 Como chegar
               </Link>
+              <a
+                href={whatsappUrl(WHATSAPP_MESSAGES.airbnbAntesReservar)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#25D366] text-white font-body font-bold rounded-xl hover:brightness-110 transition-all"
+              >
+                <MessageCircle className="w-5 h-5" />
+                Falar no WhatsApp
+              </a>
             </div>
           </motion.div>
         </div>
       </section>
+
+      <WhatsAppFloat message={WHATSAPP_MESSAGES.airbnbGeral} />
     </div>
   );
 }

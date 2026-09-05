@@ -1,11 +1,13 @@
 import { MessageCircle } from "lucide-react";
-import { whatsappUrl } from "@/lib/site";
+import { WHATSAPP_MESSAGES, whatsappUrl } from "@/lib/site";
 
-const whatsappLink = whatsappUrl("Olá! Gostaria de saber mais sobre o Ibiunature Aqua Clube.");
+type WhatsAppFloatProps = {
+  message?: string;
+};
 
-const WhatsAppFloat = () => (
+const WhatsAppFloat = ({ message = WHATSAPP_MESSAGES.home }: WhatsAppFloatProps) => (
   <a
-    href={whatsappLink}
+    href={whatsappUrl(message)}
     target="_blank"
     rel="noopener noreferrer"
     aria-label="Fale conosco pelo WhatsApp"

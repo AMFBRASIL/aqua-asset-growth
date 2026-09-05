@@ -7,12 +7,37 @@ export const WHATSAPP_DISPLAY = "(11) 92006-9049";
 export const CONTACT_EMAIL = "promautone@gmail.com";
 export const INSTAGRAM_HANDLE = "ibiunatureoficial";
 
-export const WHATSAPP_MESSAGE_PREFIX =
-  "Olá Dalbert cristiano , estou com duvida... Preciso de ajuda... ";
+export const WHATSAPP_MESSAGE_PREFIX = "Ola Dalbert cristiano , ";
+
+/** Corpo das mensagens (sem o prefixo — adicionado automaticamente) */
+export const WHATSAPP_MESSAGES = {
+  home:
+    "estou no site do Ibiunature Aqua Clube e gostaria de mais informações sobre investimento ou locação por temporada. Pode me ajudar?",
+  contato:
+    "estou na página de contato e gostaria de falar com um consultor sobre investimento no Ibiunature Aqua Clube. Pode me atender?",
+  localizacao:
+    "vi a página de localização do Ibiunature Aqua Clube e gostaria de saber como chegar e agendar uma visita. Pode me orientar?",
+  airbnbGeral:
+    "estou na página Airbnb do Ibiunature Aqua Clube e gostaria de ajuda para escolher o apartamento ideal para minha estadia. Pode me orientar?",
+  airbnbAntesReservar:
+    "já conheço os anúncios no Airbnb e gostaria de tirar uma última dúvida antes de reservar. Pode me ajudar?",
+} as const;
 
 export function whatsappUrl(message: string) {
   const text = `${WHATSAPP_MESSAGE_PREFIX}${message.trim()}`;
   return `https://wa.me/${WHATSAPP_E164}?text=${encodeURIComponent(text)}`;
+}
+
+export function whatsappAlugarUnit(apartmentName: string) {
+  return whatsappUrl(
+    `tenho interesse no ${apartmentName} para locação por temporada. Gostaria de consultar disponibilidade, valores e condições da estadia no clube.`
+  );
+}
+
+export function whatsappAirbnbUnit(apartmentName: string, code: string) {
+  return whatsappUrl(
+    `vi o ${apartmentName} (Aqua ${code}) no site e tenho interesse em reservar pelo Airbnb. Pode me ajudar com disponibilidade, valores e como funciona a estadia no clube?`
+  );
 }
 
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/assets/localizacao-piscina.png`;

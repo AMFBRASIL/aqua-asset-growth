@@ -34,6 +34,8 @@ import {
   INSTAGRAM_HANDLE,
   SITE_URL,
   WHATSAPP_DISPLAY,
+  WHATSAPP_MESSAGES,
+  SITE_URL,
   whatsappUrl,
 } from "@/lib/site";
 
@@ -98,9 +100,7 @@ function CopyButton({ value, label }: { value: string; label: string }) {
 
 export default function LocalizacaoPage() {
   const [pageUrl, setPageUrl] = useState(`${SITE_URL}/localizacao`);
-  const whatsappLink = whatsappUrl(
-    "Olá! Vi a página de localização do Ibiunature Aqua Clube e gostaria de mais informações."
-  );
+  const whatsappLink = whatsappUrl(WHATSAPP_MESSAGES.localizacao);
 
   useEffect(() => {
     setPageUrl(`${window.location.origin}/localizacao`);
