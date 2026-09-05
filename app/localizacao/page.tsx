@@ -35,7 +35,6 @@ import {
   SITE_URL,
   WHATSAPP_DISPLAY,
   WHATSAPP_MESSAGES,
-  SITE_URL,
   whatsappUrl,
 } from "@/lib/site";
 
