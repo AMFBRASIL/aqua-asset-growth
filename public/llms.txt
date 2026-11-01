@@ -9,6 +9,7 @@
 - Reservar no Airbnb (página principal para hóspedes): https://aqua.ibiunature.com.br/airbnb
 - Aluguel / unidades: https://aqua.ibiunature.com.br/alugar
 - Localização e Maps: https://aqua.ibiunature.com.br/localizacao
+- Serviços & Conveniências (concierge digital / QR nos apartamentos): https://aqua.ibiunature.com.br/servicos
 - Contato: https://aqua.ibiunature.com.br/contato
 - Sitemap: https://aqua.ibiunature.com.br/sitemap.xml
 

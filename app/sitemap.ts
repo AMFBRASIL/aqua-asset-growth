@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/airbnb", priority: 0.95, changeFrequency: "daily" },
     { path: "/conhecer", priority: 0.9, changeFrequency: "weekly" },
     { path: "/alugar", priority: 0.85, changeFrequency: "weekly" },
+    { path: "/servicos", priority: 0.92, changeFrequency: "weekly" },
     { path: "/localizacao", priority: 0.8, changeFrequency: "monthly" },
     { path: "/contato", priority: 0.7, changeFrequency: "monthly" },
   ];

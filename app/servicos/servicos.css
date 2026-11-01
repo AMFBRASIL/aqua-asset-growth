@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap");
+
+.servicos-page {
+  --sv-deep: #123d35;
+  --sv-aqua: #18b8b0;
+  --sv-cream: #f8faf8;
+  --sv-gold: #d7b77a;
+  --sv-ink: #263238;
+  --font-servicos-display: "Plus Jakarta Sans", Inter, system-ui, sans-serif;
+  --font-servicos-body: Inter, system-ui, sans-serif;
+  background: var(--sv-cream);
+  color: var(--sv-ink);
+  font-family: var(--font-servicos-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.servicos-page h1,
+.servicos-page h2,
+.servicos-page h3 {
+  font-family: var(--font-servicos-display);
+  letter-spacing: -0.02em;
+}
+
+.servicos-glass {
+  background: rgba(248, 250, 248, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(18, 61, 53, 0.08);
+}
+
+.servicos-hero-gradient {
+  background: linear-gradient(
+    180deg,
+    rgba(18, 61, 53, 0.35) 0%,
+    rgba(18, 61, 53, 0.55) 45%,
+    rgba(18, 61, 53, 0.92) 100%
+  );
+}
